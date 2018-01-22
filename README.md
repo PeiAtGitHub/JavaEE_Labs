@@ -1,6 +1,6 @@
 # JavaEE_Labs
 
-TODO.
+1. JavaEE stuffs.(it's renamed EE4J after JEE 8)
 
-Java EE stuffs.(Renamed EE4J nowadays.)
-Based on the examples from oracle JEE 8 tutorial.
+2. JEE 8 is already out, but IDE support is not good as of now, 
+   so this lab at present still using JEE7 + GF4
