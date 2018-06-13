@@ -1,18 +1,16 @@
 package javaeetutorial.hello1;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.enterprise.inject.Model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Named
-@RequestScoped
+@Model
 @NoArgsConstructor
 @Setter
 @Getter
-public class Hello {
+public class Hello2 {
 
     private String name;
 

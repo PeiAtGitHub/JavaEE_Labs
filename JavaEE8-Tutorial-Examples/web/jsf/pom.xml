@@ -20,7 +20,6 @@
         <module>checkout-module</module>
         <module>guessnumber-jsf</module>
         <module>hello1</module>
-        <module>hello1-rlc</module>
         <module>reservation</module>
         <module>simple-flow</module>
         <module>compositecomponentexample</module>
