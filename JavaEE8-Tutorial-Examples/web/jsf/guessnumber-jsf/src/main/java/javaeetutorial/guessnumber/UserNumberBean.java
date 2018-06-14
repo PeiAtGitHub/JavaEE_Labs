@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.guessnumber;
 
 import java.io.Serializable;
@@ -12,53 +5,52 @@ import java.util.Random;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Named
 @SessionScoped
 public class UserNumberBean implements Serializable {
 
     private static final long serialVersionUID = 5443351151396868724L;
-    Integer randomInt = null;
-    private Integer userNumber = null;
-    String response = null;
-    private int maximum = 10;
-    private int minimum = 0;
-
+    
+    Integer serverRandomNum = null;
+    
+    String response  = null;
+    
+    @Getter 
+    @Setter
+    private Integer userInputNumber = null;
+    
+    @Getter 
+    @Setter
+    private int min = 0;
+    
+    @Getter 
+    @Setter
+    private int max = 10;
+    
+    
     public UserNumberBean() {
-        Random randomGR = new Random();
-        randomInt = new Integer(randomGR.nextInt(maximum + 1));
-        // Print number to server log
-        System.out.println("Duke's number: " + randomInt);
+        
+        serverRandomNum = Integer.valueOf(new Random().nextInt(max + 1));
+
+        System.out.println("Server random number is: " + serverRandomNum);
+        
     }
 
-    public void setUserNumber(Integer user_number) {
-        userNumber = user_number;
-    }
-
-    public Integer getUserNumber() {
-        return userNumber;
-    }
-
+    
     public String getResponse() {
-        if ((userNumber == null) || (userNumber.compareTo(randomInt) != 0)) {
-            return "Sorry, " + userNumber + " is incorrect.";
+        
+        response = "User input number " + userInputNumber;
+        
+        if ((userInputNumber == null) || (userInputNumber.compareTo(serverRandomNum) != 0)) {
+            response += " is NOT EQUAL to server random number.";
         } else {
-            return "Yay! You got it!";
+            response += " is EQUAL to the server random number.";
         }
+        
+        return response;
     }
 
-    public int getMaximum() {
-        return (this.maximum);
-    }
-
-    public void setMaximum(int maximum) {
-        this.maximum = maximum;
-    }
-
-    public int getMinimum() {
-        return (this.minimum);
-    }
-
-    public void setMinimum(int minimum) {
-        this.minimum = minimum;
-    }
 }
