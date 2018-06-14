@@ -1,4 +1,4 @@
-package javaeetutorial.hello1;
+package javaeetutorial.jsf.hello1;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

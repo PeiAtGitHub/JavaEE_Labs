@@ -6,11 +6,11 @@
     <application>
         <resource-library-contracts>
             <contract-mapping>
-                <url-pattern>/rlc/response*</url-pattern>
+                <url-pattern>/greeting-rlc/response*</url-pattern>
                 <contracts>reply</contracts>
             </contract-mapping>
             <contract-mapping>
-                <url-pattern>/rlc/index*</url-pattern>
+                <url-pattern>/greeting-rlc/greeting*</url-pattern>
                 <contracts>hello</contracts>
             </contract-mapping>
         </resource-library-contracts>

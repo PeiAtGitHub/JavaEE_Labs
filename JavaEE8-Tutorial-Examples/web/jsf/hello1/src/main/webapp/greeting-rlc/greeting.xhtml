@@ -10,7 +10,6 @@
         <ui:define name="title">Facelets Hello Greeting</ui:define>
         <ui:define name="content">
             <h:form>
-                <h2>A demo of @Model and Resource Library Contracts(RLC)</h2>
                 <h2>Please enter your name.</h2>
                 <h:inputText id="username" title="My name is: " value="#{hello2.name}"
                              required="true" requiredMessage="Error: A name is required." maxlength="25" />
@@ -20,8 +19,7 @@
                 </h:commandButton>
             </h:form>
             <div class="messagecolor">
-                <h:messages showSummary="true" showDetail="false"
-                            errorStyle="color: #d20005" infoStyle="color: blue"/>
+                <h:messages showSummary="true" showDetail="false" errorStyle="color: #d20005" infoStyle="color: blue"/>
             </div>
         </ui:define>
     </ui:composition>
