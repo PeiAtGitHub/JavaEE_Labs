@@ -1,4 +1,4 @@
-package javaeetutorial.guessnumber;
+package javaeetutorial.jsf.guessnumber;
 
 import java.io.Serializable;
 import java.util.Random;

@@ -12,8 +12,8 @@
     </h:head>
     <h:body>
         <h:form>
-        	<h2>Server has generated a random number from #{userNumberBean.min} to #{userNumberBean.max}.
-                Please input a number and see if they are equal.</h2>
+        	<h2>Server has generated a random number from #{userNumberBean.min} to #{userNumberBean.max}.</h2>
+            <h2>Please input a number and see if they are equal.</h2>
             <p>
                 <h:inputText id="userNo" title="Enter a number:" value="#{userNumberBean.userInputNumber}">
                     <f:validateLongRange minimum="#{userNumberBean.min}" maximum="#{userNumberBean.max}"/>
