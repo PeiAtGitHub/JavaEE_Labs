@@ -11,8 +11,7 @@
         <h:form>
             <h:graphicImage url="#{resource['images:duke.waving.gif']}" alt="Duke waving his hand"/>
             <h2>Please enter your name.</h2>
-            <h:inputText id="username" title="My name is: "
-                         value="#{hello1.name}"
+            <h:inputText id="username" title="My name is: " value="#{hello1.name}"
                          required="true" requiredMessage="Error: A name is required." maxlength="25" />
             <p/>
             <h:commandButton id="submit" value="Submit"  action="response" />

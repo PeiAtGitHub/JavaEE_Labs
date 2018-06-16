@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+    <h:head><title>Bookmarkable URL Example Personal Greeting</title></h:head>
+    <f:metadata>
+        <f:viewParam name="Result" value="#{hello1.name}" />
+    </f:metadata>
+    <h:body>
+        <h2>Your personal greeting!</h2>
+        <p><h:outputText value="Howdy, #{hello1.name}!" /></p>
+        
+        <h:form>
+            <h:commandButton id="back" value="Back to Main Page" action="greeting" />
+        </h:form>
+    </h:body>
+</html>
