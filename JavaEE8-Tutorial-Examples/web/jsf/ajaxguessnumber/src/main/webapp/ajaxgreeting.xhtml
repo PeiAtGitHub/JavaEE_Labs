@@ -1,13 +1,4 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!--
-
-    Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
-
-    You may not modify, use, reproduce, or distribute this software except in
-    compliance with  the terms of the License at:
-    https://github.com/javaee/tutorial-examples/LICENSE.txt
-
--->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en"
@@ -21,19 +12,11 @@
     </h:head>
     <h:body>
         <h:form id="AjaxGuess">
-            <h:graphicImage value="#{resource['images:wave.med.gif']}"
-                            alt="Duke waving his hand"/>
-            <h2>
-                Hi, my name is Duke. I am thinking of a number from
-                #{dukesNumberBean.minimum} to #{dukesNumberBean.maximum}.
-                Can you guess it?
-            </h2>
+            <h2>The server has generated a random number from #{serverNumberBean.min} to #{serverNumberBean.max}.</h2>
+            <h2>Please enter your number to see if they are equal.</h2>
             <p>
-                <h:inputText id="userNo" 
-                             title="Enter a number from 0 to 10:"
-                             value="#{userNumberBean.userNumber}">
-                    <f:validateLongRange minimum="#{dukesNumberBean.minimum}"
-                                         maximum="#{dukesNumberBean.maximum}"/>
+                <h:inputText id="userNo" title="Enter a number from 0 to 10:" value="#{userNumberBean.userInputNumber}">
+                    <f:validateLongRange minimum="#{serverNumberBean.min}" maximum="#{serverNumberBean.max}"/>
                 </h:inputText>
 
                 <h:commandButton id="submit" value="Submit">
@@ -42,15 +25,10 @@
             </p>
             <p>
                 <h:panelGroup layout="block" id="outputGroup">
-                    <h:outputText id="result" style="color:blue"
-                                  value="#{userNumberBean.response}" 
+                    <h:outputText id="result" style="color:blue" value="#{userNumberBean.response}" 
                                   rendered="#{!facesContext.validationFailed}"/>
-                    <h:message id="errors1" 
-                               showSummary="true" 
-                               showDetail="false"
-                               style="color: #d20005;
-                               font-family: 'New Century Schoolbook', serif;
-                               font-style: oblique;
+                    <h:message id="errors1" showSummary="true" showDetail="false"
+                               style="color: #d20005; font-family: 'New Century Schoolbook', serif; font-style: oblique;
                                text-decoration: overline" 
                                for="userNo"/>
                 </h:panelGroup>
