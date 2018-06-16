@@ -1,18 +1,18 @@
 package javaeetutorial.jsf.hello1;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.enterprise.inject.Model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Named
+@Model
 @RequestScoped
 @NoArgsConstructor
 @Setter
 @Getter
-public class Hello1 {
+public class Hello {
 
     private String name;
 
