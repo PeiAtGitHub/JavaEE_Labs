@@ -18,7 +18,6 @@
         <module>checkout-module</module>
         <module>hello1</module>
         <module>reservation</module>
-        <module>simple-flow</module>
         <module>compositecomponentexample</module>
   </modules>
     
