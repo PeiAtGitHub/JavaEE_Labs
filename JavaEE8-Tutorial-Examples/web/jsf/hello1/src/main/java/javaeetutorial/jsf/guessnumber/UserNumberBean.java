@@ -7,7 +7,6 @@ import javax.inject.Named;
 
 import lombok.Getter;
 import lombok.Setter;
-
 @Named
 @SessionScoped
 public class UserNumberBean implements Serializable {
@@ -21,19 +20,14 @@ public class UserNumberBean implements Serializable {
     @Setter
     private Integer userInputNumber = null;
     
-    String response  = null;
-    
     public String getResponse() {
-        
-        response = "User input number " + userInputNumber;
-        
-        if ((userInputNumber == null) || (userInputNumber.compareTo(serverNumberBean.getRandomInt()) != 0)) {
-            response += " is NOT EQUAL to server random number.";
+        if (userInputNumber == null) {
+            return "No input.";
+        }else if (userInputNumber.compareTo(serverNumberBean.getRandomInt()) != 0) {
+            return userInputNumber + " is NOT EQUAL to the server random number.";
         } else {
-            response += " is EQUAL to the server random number.";
+            return userInputNumber + " is EQUAL to the server random number.";
         }
-        
-        return response;
     }
 
 }
