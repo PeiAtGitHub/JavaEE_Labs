@@ -1,4 +1,4 @@
 # JavaEE_Labs
 
-JavaEE 8+ Examples, Demos.
+JavaEE 8+ Examples.
 
