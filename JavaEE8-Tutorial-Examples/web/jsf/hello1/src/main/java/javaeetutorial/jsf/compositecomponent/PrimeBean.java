@@ -1,4 +1,4 @@
-package javaeetutorial.compositecomponentexample;
+package javaeetutorial.jsf.compositecomponent;
 
 import java.io.Serializable;
 
