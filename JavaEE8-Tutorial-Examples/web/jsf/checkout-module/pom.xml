@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>org.glassfish.javaeetutorial</groupId>
-    <artifactId>checkout-module</artifactId>
+    <artifactId>faces-flows-example-a-checkout-module</artifactId>
     <packaging>war</packaging>
     
     <name>${project.artifactId}</name>
