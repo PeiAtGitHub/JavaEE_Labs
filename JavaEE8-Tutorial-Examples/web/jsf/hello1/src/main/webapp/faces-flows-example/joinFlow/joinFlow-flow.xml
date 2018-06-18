@@ -1,7 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?>
 <!--
-This is the definition file of flow "join"
+This is demo of define flow "joinFlow" using XML.
+This definition is not in use (commented out), because XML definition is 
+not flexible concerning directory structures and etc.
+So, the flow "joinFlow" is actually defined, as flow "checkoutFlow", in Java codes (JoinFlow.java).
 -->
+<!--
+<?xml version='1.0' encoding='UTF-8'?>
 <faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
@@ -36,3 +40,4 @@ This is the definition file of flow "join"
         </flow-call>
     </flow-definition>
 </faces-config>
+-->

@@ -1,4 +1,4 @@
-package javaeetutorial.jsf.checkoutmodule;
+package javaeetutorial.jsf.facesflows;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<body>
+
+<pre>
+The Faces Flow example (checkout module) ORIGINALLY has an issue
+when you call a flow from another flow, 
+For example, perform below steps:
+checkout--> 
+submit and complete checkout --> 
+join the club (call joinFlow from checkoutFlow)--> 
+then, in joinFlow, when you click to exit the join flow, 
+you do not return to the return node of joinFlow, but return to the first flow page of checkoutFlow
+with a warning message on page:
+"Unable to find matching navigation case with from-view-id '/joinFlow/joinFlow2.xhtml' 
+for action 'returnFromJoinFlow' with outcome '/faces-flows-example/exitpage'".
+<br/>
+This is because of the nested faces flows.
+<br/>
+Generally, 
+Quote from the JEE 8 tutorial:
+"Flows can be nested, so that if you call one flow from another and then exit the second flow, 
+you return to the calling flow rather than to the second flow’s return node."
+
+To the specific example of the "checkout-module", 
+Quote from the JEE 8 tutorial:
+"Because flows are nested, if you click Exit Flow from a called flow, 
+you will return to the first page of the calling flow. 
+(You may see a warning, which you can ignore.) 
+Click Exit Flow on that page to go to the specified return node."
+</pre>
+</body>
+</html>

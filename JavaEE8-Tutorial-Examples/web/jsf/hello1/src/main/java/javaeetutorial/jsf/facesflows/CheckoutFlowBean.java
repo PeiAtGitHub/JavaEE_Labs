@@ -1,4 +1,4 @@
-package javaeetutorial.jsf.checkoutmodule;
+package javaeetutorial.jsf.facesflows;
 
 import java.io.Serializable;
 import javax.faces.flow.FlowScoped;
@@ -31,7 +31,7 @@ public class CheckoutFlowBean implements Serializable {
    
 
     public String getReturnValue() {
-        return "/index";
+        return "/faces-flows-example/index";
     }
     
 }

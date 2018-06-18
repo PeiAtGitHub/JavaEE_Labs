@@ -1,4 +1,4 @@
-package javaeetutorial.jsf.checkoutmodule;
+package javaeetutorial.jsf.facesflows;
 
 import java.io.Serializable;
 import javax.inject.Named;
@@ -38,7 +38,7 @@ public class JoinFlowBean implements Serializable {
     }
     
     public String getReturnValue() {
-        return "/exitpage";
+        return "/faces-flows-example/join-exitpage";
     }
 
 

@@ -15,7 +15,6 @@
     <name>jsf</name>
   
     <modules>
-        <module>faces-flows-example-a-checkout-module</module>
         <module>hello1</module>
         <module>reservation</module>
   </modules>
