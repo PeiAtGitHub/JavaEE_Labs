@@ -16,7 +16,6 @@
   
     <modules>
         <module>hello1</module>
-        <module>reservation</module>
   </modules>
     
 </project>
