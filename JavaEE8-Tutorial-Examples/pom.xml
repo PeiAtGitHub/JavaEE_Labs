@@ -97,6 +97,7 @@
     </profiles>
 
     <modules>
+        <module>JSF</module>
         <module>archetypes</module>
         <module>batch</module>
         <module>case-studies</module>
