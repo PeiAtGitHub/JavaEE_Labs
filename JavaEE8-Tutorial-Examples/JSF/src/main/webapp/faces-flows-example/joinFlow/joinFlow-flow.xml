@@ -1,8 +1,9 @@
 <!--
-This is demo of define flow "joinFlow" using XML.
+This is demo of define flow "joinFlow" by XML.
 This definition is not in use (commented out), because XML definition is 
-not flexible concerning directory structures and etc.
-So, the flow "joinFlow" is actually defined, as flow "checkoutFlow", in Java codes (JoinFlow.java).
+not flexible concerning directory structures (sub directory) definitions and etc.
+So, the flow "joinFlow" is actually defined in Java class (JoinFlow.java).
+(flow "checkoutFlow" is also defined in Java class)
 -->
 <!--
 <?xml version='1.0' encoding='UTF-8'?>
