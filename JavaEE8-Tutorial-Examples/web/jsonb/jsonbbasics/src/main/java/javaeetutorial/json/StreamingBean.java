@@ -1,4 +1,4 @@
-package javaeetutorial.jsonpstreaming;
+package javaeetutorial.json;
 
 import java.io.*;
 import java.util.*;
