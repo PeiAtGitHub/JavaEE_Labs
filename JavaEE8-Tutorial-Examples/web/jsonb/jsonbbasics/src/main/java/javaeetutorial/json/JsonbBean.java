@@ -1,4 +1,4 @@
-package javaeetutorial.jsonbmodel;
+package javaeetutorial.json;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,8 +10,6 @@ import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
 
-import javaeetutorial.jsonbmodel.person.Person;
-import javaeetutorial.jsonbmodel.person.PhoneNumber;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

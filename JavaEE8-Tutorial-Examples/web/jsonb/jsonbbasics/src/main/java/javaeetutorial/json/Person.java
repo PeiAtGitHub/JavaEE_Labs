@@ -1,4 +1,4 @@
-package javaeetutorial.jsonbmodel.person;
+package javaeetutorial.json;
 
 import java.util.List;
 

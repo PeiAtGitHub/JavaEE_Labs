@@ -1,4 +1,4 @@
-package javaeetutorial.jsonbmodel.person;
+package javaeetutorial.json;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
