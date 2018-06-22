@@ -9,10 +9,10 @@
     </parent>
 
     <groupId>org.glassfish.javaeetutorial</groupId>
-    <artifactId>JSON</artifactId>
+    <artifactId>Json</artifactId>
     <packaging>war</packaging>
 
-    <name>JSON</name>
+    <name>Json</name>
 
     <build>
         <finalName>${project.artifactId}</finalName>
