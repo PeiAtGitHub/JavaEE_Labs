@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>HTTP ETF</title>
-  <link rel="stylesheet" type="text/css" href="resources/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="../resources/css/default.css" />
   <script type="text/javascript">
       var ajaxRequest;
       function updatePage() {
@@ -17,7 +17,7 @@
       function makeAjaxRequest() {
           ajaxRequest = new XMLHttpRequest();
           ajaxRequest.onreadystatechange = updatePage;
-          ajaxRequest.open("GET", "http://localhost:8080/ETF/etf", true);
+          ajaxRequest.open("GET", "http://localhost:8080/ETF/ETF", true);
           ajaxRequest.send(null);
       }
   </script>

@@ -1,4 +1,4 @@
-package javaeetutorial.web.dukeetf;
+package javaeetutorial.web.etf;
 
 import java.util.Random;
 
@@ -19,17 +19,17 @@ public class PriceVolumeBean {
     
     @Resource TimerService tservice;     // the container's timer service
     private Random random;
-    private DukeETFServlet servlet;
+    private ETFServlet servlet;
     private volatile double price = 100.0;
     private volatile int volume = 300000;
     
     @PostConstruct
     public void init() {
         random = new Random();
-        tservice.createIntervalTimer(1500, 1500, new TimerConfig());
+        tservice.createIntervalTimer(1000, 5000, new TimerConfig());
     }
     
-    public void registerServlet(DukeETFServlet servlet) {
+    public void registerServlet(ETFServlet servlet) {
         this.servlet = servlet;
     }
     
