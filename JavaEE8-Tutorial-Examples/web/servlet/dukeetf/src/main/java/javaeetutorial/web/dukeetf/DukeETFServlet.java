@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.web.dukeetf;
 
 import java.io.IOException;
@@ -23,32 +16,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns={"/dukeetf"}, asyncSupported=true)
+@WebServlet(urlPatterns={"/etf"}, asyncSupported=true)
 public class DukeETFServlet extends HttpServlet {
+    
     private static final Logger logger = Logger.getLogger("DukeETFServlet");
     private static final long serialVersionUID = 2114153638027156979L;
+    
     private Queue<AsyncContext> requestQueue;
+    
     @EJB private PriceVolumeBean pvbean; 
     
     @Override
     public void init(ServletConfig config) {
-        /* Queue for requests */
         requestQueue = new ConcurrentLinkedQueue<>();
-        /* Register with the bean that provides price/volume updates */
         pvbean.registerServlet(this);
     }
     
-    /* PriceVolumeBean calls this method every second to send updates */
     public void send(double price, int volume) {
-        /* Send update to all connected clients */
-        for (AsyncContext acontext : requestQueue) {
+        for (AsyncContext acontext : requestQueue) {// Send update to all connected clients
             try {
-                String msg = String.format("%.2f / %d", price, volume);
                 PrintWriter writer = acontext.getResponse().getWriter();
-                writer.write(msg);
-                logger.log(Level.INFO, "Sent: {0}", msg);
-                /* Close the connection
-                 * The client (JavaScript) makes a new one instantly */
+                writer.write(String.format("%.2f / %d", price, volume));
+                // Close the connection, The client (JavaScript) makes a new one instantly
                 acontext.complete();
             } catch (IOException ex) {
                 logger.log(Level.INFO, ex.toString());
@@ -56,13 +45,11 @@ public class DukeETFServlet extends HttpServlet {
         }
     }
     
-    /* Service method */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html");
-        /* Put request in async mode. */
+        // Put request in async mode.
         final AsyncContext acontext = request.startAsync();
-        /* Remove from the queue when done */
         acontext.addListener(new AsyncListener() {
             @Override
             public void onComplete(AsyncEvent ae) throws IOException {
@@ -82,7 +69,6 @@ public class DukeETFServlet extends HttpServlet {
             @Override
             public void onStartAsync(AsyncEvent ae) throws IOException { }
         });
-        /* Add to the queue */
         requestQueue.add(acontext);
         logger.log(Level.INFO, "Connection open.");
     }
