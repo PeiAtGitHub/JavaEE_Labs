@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.mood;
 
 import java.util.logging.Level;
@@ -19,11 +12,9 @@ import javax.servlet.annotation.WebListener;
  * Web application lifecycle listener.
  */
 @WebListener()
-public class SimpleServletListener implements ServletContextListener,
-        ServletContextAttributeListener {
+public class SimpleServletListener implements ServletContextListener, ServletContextAttributeListener {
 
-    static final Logger log =
-            Logger.getLogger("mood.web.SimpleServletListener");
+    static final Logger log = Logger.getLogger("mood.web.SimpleServletListener");
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -43,8 +34,7 @@ public class SimpleServletListener implements ServletContextListener,
 
     @Override
     public void attributeRemoved(ServletContextAttributeEvent event) {
-        log.log(Level.INFO, "Attribute {0} has been removed", 
-                event.getName());
+        log.log(Level.INFO, "Attribute {0} has been removed", event.getName());
     }
 
     @Override
