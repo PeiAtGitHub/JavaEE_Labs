@@ -38,6 +38,7 @@ public class TimeOfDayFilter implements Filter {
         switch (hourOfDay) {
         case 23:
         case 24:
+        case 0:
         case 1:
         case 2:
         case 3:

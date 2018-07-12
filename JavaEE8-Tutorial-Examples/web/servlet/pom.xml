@@ -14,7 +14,7 @@
     <name>servlet</name>
   
     <modules>
-        <module>ETF</module>
+        <module>ServletExamples</module>
         <module>fileupload</module>
         <module>hello2</module>
     </modules>
