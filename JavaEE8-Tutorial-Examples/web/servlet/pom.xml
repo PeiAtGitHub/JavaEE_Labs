@@ -17,6 +17,5 @@
         <module>ETF</module>
         <module>fileupload</module>
         <module>hello2</module>
-        <module>mood</module>
     </modules>
 </project>

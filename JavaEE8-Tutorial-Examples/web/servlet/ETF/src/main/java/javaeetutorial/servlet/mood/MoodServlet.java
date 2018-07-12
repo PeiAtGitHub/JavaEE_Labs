@@ -1,4 +1,4 @@
-package javaeetutorial.mood;
+package javaeetutorial.servlet.mood;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/report")
+@WebServlet("/mood")
 public class MoodServlet extends HttpServlet {
     
     public static final String MOOD = "mood";

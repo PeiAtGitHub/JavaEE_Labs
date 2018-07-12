@@ -1,4 +1,4 @@
-package javaeetutorial.mood;
+package javaeetutorial.servlet.mood;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebInitParam;
 
 @WebFilter(
         filterName = "TimeOfDayFilter", 
-        urlPatterns = { "/*" }, 
+        urlPatterns = { "/mood" }, 
         initParams = {@WebInitParam(name = MoodServlet.MOOD, value = "awake") }
         )
 public class TimeOfDayFilter implements Filter {

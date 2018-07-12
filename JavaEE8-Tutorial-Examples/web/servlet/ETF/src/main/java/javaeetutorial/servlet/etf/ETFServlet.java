@@ -1,4 +1,4 @@
-package javaeetutorial.web.etf;
+package javaeetutorial.servlet.etf;
 
 import java.io.IOException;
 import java.io.PrintWriter;
