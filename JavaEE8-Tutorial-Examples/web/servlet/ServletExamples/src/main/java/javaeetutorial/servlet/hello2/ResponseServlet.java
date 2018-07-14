@@ -1,4 +1,4 @@
-package javaeetutorial.hello2;
+package javaeetutorial.servlet.hello2;
 
 import java.io.IOException;
 import java.io.PrintWriter;

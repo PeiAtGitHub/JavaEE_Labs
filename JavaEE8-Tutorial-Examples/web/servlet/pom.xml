@@ -16,6 +16,5 @@
     <modules>
         <module>ServletExamples</module>
         <module>fileupload</module>
-        <module>hello2</module>
     </modules>
 </project>
