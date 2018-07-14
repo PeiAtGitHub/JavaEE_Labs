@@ -51,7 +51,7 @@
                 </os>
             </activation>
             <properties>
-                <glassfish.home.prefix>c:/</glassfish.home.prefix>
+                <glassfish.home.prefix>C:/</glassfish.home.prefix>
                 <glassfish.executables.suffix>.bat</glassfish.executables.suffix>
             </properties>
         </profile>
@@ -112,6 +112,7 @@
         <module>persistence</module>
         <module>security</module>
         <module>web</module>
+        <module>Servlet</module>
     </modules>
 
     <repositories>
