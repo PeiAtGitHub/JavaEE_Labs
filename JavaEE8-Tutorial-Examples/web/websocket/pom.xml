@@ -14,7 +14,7 @@
     <name>websocket</name>
   
     <modules>
-        <module>dukeetf2</module>
+        <module>etf2</module>
         <module>websocketbot</module>
     </modules>
 </project>
