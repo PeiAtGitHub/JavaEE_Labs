@@ -1,4 +1,4 @@
-package javaeetutorial.fileupload;
+package javaeetutorial.servlet.fileupload;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet(name = "FileUploadServlet", urlPatterns = { "/upload" })
+@WebServlet(name = "FileUploadServlet", urlPatterns = { "/fileupload/upload" })
 @MultipartConfig
 public class FileUploadServlet extends HttpServlet {
 

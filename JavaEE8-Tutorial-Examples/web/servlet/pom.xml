@@ -15,6 +15,5 @@
   
     <modules>
         <module>ServletExamples</module>
-        <module>fileupload</module>
     </modules>
 </project>
