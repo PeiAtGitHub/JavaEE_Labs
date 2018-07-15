@@ -17,7 +17,6 @@
         <module>billpayment</module>
         <module>decorators</module>
         <module>encoder</module>
-        <module>guessnumber-cdi</module>
         <module>producerfields</module>
         <module>producermethods</module>
         <module>simplegreeting</module>
