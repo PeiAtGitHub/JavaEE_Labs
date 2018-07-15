@@ -17,7 +17,7 @@
 
     <modules>
         <module>etf2</module>
-        <module>websocketbot</module>
+        <module>chatroom</module>
     </modules>
 
     <build>

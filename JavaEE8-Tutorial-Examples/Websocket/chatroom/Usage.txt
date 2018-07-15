@@ -1,0 +1,2 @@
+1. all the messages are sent to all users.
+2. if your message start with "@bot", bot will reply your message to all automatically.
