@@ -1,4 +1,4 @@
-package javaeetutorial.producerfields.db;
+package javaeetutorial.todolist.db;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;

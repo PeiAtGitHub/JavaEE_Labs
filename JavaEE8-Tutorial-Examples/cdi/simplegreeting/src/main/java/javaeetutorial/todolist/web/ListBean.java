@@ -1,9 +1,10 @@
-package javaeetutorial.producerfields.web;
+package javaeetutorial.todolist.web;
 
 import java.io.Serializable;
 import java.util.List;
-import javaeetutorial.producerfields.ejb.RequestBean;
-import javaeetutorial.producerfields.entity.ToDo;
+
+import javaeetutorial.todolist.ejb.RequestBean;
+import javaeetutorial.todolist.entity.ToDo;
 import lombok.Getter;
 import lombok.Setter;
 

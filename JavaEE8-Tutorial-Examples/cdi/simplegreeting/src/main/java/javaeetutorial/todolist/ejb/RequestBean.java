@@ -1,9 +1,11 @@
-package javaeetutorial.producerfields.ejb;
+package javaeetutorial.todolist.ejb;
 
 import java.util.Calendar;
 import java.util.List;
-import javaeetutorial.producerfields.db.UserDatabase;
-import javaeetutorial.producerfields.entity.ToDo;
+
+import javaeetutorial.todolist.db.UserDatabase;
+import javaeetutorial.todolist.entity.ToDo;
+
 import javax.ejb.EJBException;
 import javax.ejb.Stateful;
 import javax.enterprise.context.ConversationScoped;

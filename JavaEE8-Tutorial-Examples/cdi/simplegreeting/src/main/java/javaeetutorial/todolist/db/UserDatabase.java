@@ -1,4 +1,4 @@
-package javaeetutorial.producerfields.db;
+package javaeetutorial.todolist.db;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;

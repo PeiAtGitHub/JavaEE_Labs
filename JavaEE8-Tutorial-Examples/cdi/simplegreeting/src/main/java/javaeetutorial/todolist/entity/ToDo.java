@@ -1,4 +1,4 @@
-package javaeetutorial.producerfields.entity;
+package javaeetutorial.todolist.entity;
 
 import java.io.Serializable;
 import java.util.Date;
