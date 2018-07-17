@@ -1,6 +1,6 @@
 package javaeetutorial.producermethods;
 
-public class CoderImpl implements Coder {
+public class Shifter implements Coder {
 
     /**
      * Shifts an input string.

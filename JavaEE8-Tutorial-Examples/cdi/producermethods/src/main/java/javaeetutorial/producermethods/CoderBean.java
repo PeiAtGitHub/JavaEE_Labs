@@ -29,19 +29,18 @@ public class CoderBean {
     private final static int TEST = 1;
     private final static int SHIFT = 2;
     
-    private int coderType = SHIFT; // default value
+    private int coderType = SHIFT; // default
 
     /**
      * Producer method that chooses between two beans
-     * @return Chosen coder implementation
      */
     @Produces @Chosen @RequestScoped
     public Coder getCoder() {
         switch (coderType) {
             case TEST:
-                return new TestCoderImpl();
+                return new DummyCoder();
             case SHIFT:
-                return new CoderImpl();
+                return new Shifter();
             default:
                 return null;
         }
