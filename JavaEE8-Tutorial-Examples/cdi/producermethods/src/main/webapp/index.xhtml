@@ -9,20 +9,22 @@
     <h:body>
         <h2>Encode String</h2>
         <p>Enter a string and an integer, then click Encode.</p>
-        <p>If you select Dummy, the DummyCoder bean just display the argument values.</p>
-        <p>If you select Shift, the Shifter bean returns a string that shifts the letters by the value you specify. 
-           The value must be between 0 and 26.</p>
         <h:form id="encodeit">
             <h:selectOneRadio id="coderType" required="true" value="#{encodeBean.coderType}">
                 <f:selectItem itemValue="1" itemLabel="Dummy"/>
                 <f:selectItem itemValue="2" itemLabel="Shift"/>
             </h:selectOneRadio>
+            <br/>
+            <span>the DummyCoder bean just display the argument values</span><br/>
+            <span>the Shifter bean returns a string that shifts the letters by the value you specify</span><br/>
             
             <p>
-              <h:outputLabel value="Enter a string: " for="inputString"/>
+              <h:outputLabel value="Enter a string: " for="inputString"/><br/>
               <h:inputText id="inputString" value="#{encodeBean.inputString}"/>
-              <h:outputLabel value="Enter the number of letters to shift by: " for="transVal"/>
+              <br/><br/>
+              <h:outputLabel value="Enter the number of letters to shift by: " for="transVal"/><br/>
               <h:inputText id="transVal" value="#{encodeBean.transVal}"/>
+              <span>(The value must be between 0 and 26.)</span>
             </p>
             <p><h:commandButton value="Encode" action="#{encodeBean.encodeString()}"/></p>
 
