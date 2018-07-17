@@ -13,24 +13,24 @@
         <p>If you select Shift, the Shifter bean returns a string that shifts the letters by the value you specify. 
            The value must be between 0 and 26.</p>
         <h:form id="encodeit">
-            <h:selectOneRadio id="coderType" required="true" value="#{coderBean.coderType}">
+            <h:selectOneRadio id="coderType" required="true" value="#{encodeBean.coderType}">
                 <f:selectItem itemValue="1" itemLabel="Dummy"/>
                 <f:selectItem itemValue="2" itemLabel="Shift"/>
             </h:selectOneRadio>
             
             <p>
               <h:outputLabel value="Enter a string: " for="inputString"/>
-              <h:inputText id="inputString" value="#{coderBean.inputString}"/>
+              <h:inputText id="inputString" value="#{encodeBean.inputString}"/>
               <h:outputLabel value="Enter the number of letters to shift by: " for="transVal"/>
-              <h:inputText id="transVal" value="#{coderBean.transVal}"/>
+              <h:inputText id="transVal" value="#{encodeBean.transVal}"/>
             </p>
-            <p><h:commandButton value="Encode" action="#{coderBean.encodeString()}"/></p>
+            <p><h:commandButton value="Encode" action="#{encodeBean.encodeString()}"/></p>
 
             <p>
               <h:outputLabel value="Result: " for="outputString"/>
-              <h:outputText id="outputString" value="#{coderBean.codedString}" style="color:blue"/> 
+              <h:outputText id="outputString" value="#{encodeBean.codedString}" style="color:blue"/> 
             </p>
-            <p><h:commandButton value="Reset" action="#{coderBean.reset}"/></p>
+            <p><h:commandButton value="Reset" action="#{encodeBean.reset}"/></p>
         </h:form>
         
         <div class="messagecolor">

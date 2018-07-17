@@ -17,7 +17,7 @@ import lombok.Setter;
 @Named
 @RequestScoped
 @Getter @Setter
-public class CoderBean {
+public class EncodeBean {
 
     private String inputString;
     private String codedString;
