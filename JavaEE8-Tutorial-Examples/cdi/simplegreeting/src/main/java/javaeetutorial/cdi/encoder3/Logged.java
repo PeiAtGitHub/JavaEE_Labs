@@ -1,4 +1,4 @@
-package javaeetutorial.decorators;
+package javaeetutorial.cdi.encoder3;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.TYPE;

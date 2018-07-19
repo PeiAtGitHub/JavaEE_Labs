@@ -1,4 +1,4 @@
-package javaeetutorial.decorators;
+package javaeetutorial.cdi.encoder3;
 
 import java.io.Serializable;
 import javax.interceptor.AroundInvoke;

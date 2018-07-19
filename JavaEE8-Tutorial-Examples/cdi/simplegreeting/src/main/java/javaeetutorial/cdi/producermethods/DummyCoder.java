@@ -10,6 +10,6 @@ public class DummyCoder implements Coder {
 
     @Override
     public String codeString(String s, int tval) {
-        return ("Input string is " + s + ", Transform value is " + tval);
+        return String.format("This is DummyCoder, I got the args: %s, %d.%n", s, tval);
     }
 }

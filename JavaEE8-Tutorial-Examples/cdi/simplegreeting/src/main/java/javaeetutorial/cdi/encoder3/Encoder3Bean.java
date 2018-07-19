@@ -1,4 +1,4 @@
-package javaeetutorial.decorators;
+package javaeetutorial.cdi.encoder3;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -7,6 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import javaeetutorial.cdi.producermethods.Coder;
 import lombok.Getter;
 import lombok.Setter;
 

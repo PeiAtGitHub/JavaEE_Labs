@@ -1,5 +1,7 @@
 package javaeetutorial.cdi.producermethods;
 
+import javaeetutorial.cdi.encoder3.Logged;
+
 public class Shifter implements Coder {
 
     /**
@@ -7,6 +9,7 @@ public class Shifter implements Coder {
      * @param tval  the number of characters to shift
      * @return      the transformed string
      */
+    @Logged
     @Override
     public String codeString(String s, int tval) {
         
