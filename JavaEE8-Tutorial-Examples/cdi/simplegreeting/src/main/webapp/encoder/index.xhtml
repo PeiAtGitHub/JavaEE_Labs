@@ -5,12 +5,12 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head><title>Encode String</title><h:outputStylesheet library="css" name="default.css"/></h:head>
+    <h:head><title>String Encoder</title><h:outputStylesheet library="css" name="default.css"/></h:head>
     <h:body>
-        <h2>Encode String</h2>
+        <h2>String Encoder</h2>
         <p>Enter a string and an integer, then click Encode.</p>
         <h:form id="encodeit">
-            <h:selectOneRadio id="coderType" required="true" value="#{encodeBean.coderType}">
+            <h:selectOneRadio id="coderType" required="true" value="#{encoderBean.coderType}">
                 <f:selectItem itemValue="1" itemLabel="Dummy"/>
                 <f:selectItem itemValue="2" itemLabel="Shift"/>
             </h:selectOneRadio>
@@ -20,19 +20,19 @@
             
             <p>
               <h:outputLabel value="Enter a string: " for="inputString"/><br/>
-              <h:inputText id="inputString" value="#{encodeBean.inputString}"/>
+              <h:inputText id="inputString" value="#{encoderBean.inputString}"/>
               <br/><br/>
               <h:outputLabel value="Enter the number of letters to shift by: " for="transVal"/><br/>
-              <h:inputText id="transVal" value="#{encodeBean.transVal}"/>
+              <h:inputText id="transVal" value="#{encoderBean.transVal}"/>
               <span>(The value must be between 0 and 26.)</span>
             </p>
-            <p><h:commandButton value="Encode" action="#{encodeBean.encodeString()}"/></p>
+            <p><h:commandButton value="Encode" action="#{encoderBean.encodeString()}"/></p>
 
             <p>
               <h:outputLabel value="Result: " for="outputString"/>
-              <h:outputText id="outputString" value="#{encodeBean.codedString}" style="color:blue"/> 
+              <h:outputText id="outputString" value="#{encoderBean.codedString}" style="color:blue"/> 
             </p>
-            <p><h:commandButton value="Reset" action="#{encodeBean.reset}"/></p>
+            <p><h:commandButton value="Reset" action="#{encoderBean.reset}"/></p>
         </h:form>
         
         <div class="messagecolor">

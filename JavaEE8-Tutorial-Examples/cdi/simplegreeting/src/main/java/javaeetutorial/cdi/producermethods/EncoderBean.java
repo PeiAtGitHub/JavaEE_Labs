@@ -16,19 +16,22 @@ import lombok.Setter;
  */
 @Named
 @RequestScoped
-@Getter @Setter
-public class EncodeBean {
+public class EncoderBean {
 
+    @Getter @Setter
     private String inputString;
+    @Getter @Setter
     private String codedString;
     
+    @Getter @Setter
     @Min(0) @Max(26)    
     @NotNull
     private int transVal;
     
     private final static int TEST = 1;
     private final static int SHIFT = 2;
-    
+
+    @Getter @Setter
     private int coderType = SHIFT; // default
 
     /**

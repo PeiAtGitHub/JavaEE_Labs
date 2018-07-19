@@ -9,22 +9,22 @@
         <h2>String Encoder 2</h2>
         <p>Very same App as the Encoder.</p>
         <p>But using different CDI technique.</p>
-        <p>Depending on which alternative is enabled (in the bean.xml)</p>
+        <p>Depending on which alternative is enabled (in the DD beans.xml)</p>
         <h:form id="encodeit">
             <p><h:outputLabel value="Enter a string: " for="inputString"/><br/>
-              <h:inputText id="inputString" value="#{coderBean.inputString}"/><br/>
+              <h:inputText id="inputString" value="#{encoder2Bean.inputString}"/><br/>
               <h:outputLabel value="Enter the number of letters to shift by: " for="transVal"/><br/>
-              <h:inputText id="transVal" value="#{coderBean.transVal}"/>
+              <h:inputText id="transVal" value="#{encoder2Bean.transVal}"/>
             </p>
             <p>
-              <h:commandButton value="Encode" action="#{coderBean.encodeString()}"/>
+              <h:commandButton value="Encode" action="#{encoder2Bean.encodeString()}"/>
             </p>
             <p>
               <h:outputLabel value="Result: " for="outputString"/>
-              <h:outputText id="outputString" value="#{coderBean.codedString}" style="color:blue"/>
+              <h:outputText id="outputString" value="#{encoder2Bean.codedString}" style="color:blue"/>
             </p>
             <p>
-              <h:commandButton value="Reset" action="#{coderBean.reset}"/>
+              <h:commandButton value="Reset" action="#{encoder2Bean.reset}"/>
             </p>
         </h:form>
         

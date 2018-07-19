@@ -16,7 +16,6 @@
     <modules>
         <module>billpayment</module>
         <module>decorators</module>
-        <module>encoder</module>
         <module>simplegreeting</module>
     </modules>
     
