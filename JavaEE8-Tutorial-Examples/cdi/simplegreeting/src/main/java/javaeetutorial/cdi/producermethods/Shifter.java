@@ -19,10 +19,9 @@ public class Shifter implements Coder {
         StringBuilder sb = new StringBuilder(s);
 
         for (int i = 0; i < sb.length(); i++) {
-            int transposval = tval;
-
+            
             int cp = sb.codePointAt(i);
-            int cplus = cp + transposval;
+            int cplus = cp + tval;
             if (cp == SPACE_CHAR) {
                 cplus = SPACE_CHAR;
             }
