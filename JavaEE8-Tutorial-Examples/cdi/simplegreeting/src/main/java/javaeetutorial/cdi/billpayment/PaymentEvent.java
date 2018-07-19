@@ -1,14 +1,14 @@
-package javaeetutorial.billpayment.event;
+package javaeetutorial.cdi.billpayment;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 public class PaymentEvent implements Serializable {
