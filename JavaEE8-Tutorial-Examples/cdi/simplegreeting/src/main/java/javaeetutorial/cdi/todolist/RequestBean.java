@@ -1,10 +1,7 @@
-package javaeetutorial.todolist.ejb;
+package javaeetutorial.cdi.todolist;
 
 import java.util.Calendar;
 import java.util.List;
-
-import javaeetutorial.todolist.db.UserDatabase;
-import javaeetutorial.todolist.entity.ToDo;
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateful;

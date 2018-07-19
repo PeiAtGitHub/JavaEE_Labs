@@ -1,4 +1,4 @@
-package javaeetutorial.guessnumber;
+package javaeetutorial.cdi.guessnumber;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;

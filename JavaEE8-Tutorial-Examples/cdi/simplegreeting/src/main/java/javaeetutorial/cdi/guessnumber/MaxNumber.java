@@ -1,5 +1,6 @@
-package javaeetutorial.simplegreeting;
+package javaeetutorial.cdi.guessnumber;
 
+import java.lang.annotation.Documented;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;
@@ -9,7 +10,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 import javax.inject.Qualifier;
 
-@Qualifier
+@Target({TYPE, METHOD, PARAMETER, FIELD})
 @Retention(RUNTIME)
-@Target({TYPE, METHOD, FIELD, PARAMETER})
-public @interface Informal {}
+@Documented
+@Qualifier
+public @interface MaxNumber {
+}

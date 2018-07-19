@@ -1,4 +1,4 @@
-package javaeetutorial.producermethods;
+package javaeetutorial.cdi.todolist;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -12,5 +12,5 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface Chosen {
+public @interface UserDatabase {
 }

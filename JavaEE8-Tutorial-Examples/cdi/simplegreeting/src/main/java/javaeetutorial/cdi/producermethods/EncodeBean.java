@@ -1,4 +1,4 @@
-package javaeetutorial.producermethods;
+package javaeetutorial.cdi.producermethods;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;

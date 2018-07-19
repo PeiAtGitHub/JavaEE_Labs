@@ -1,4 +1,4 @@
-package javaeetutorial.todolist.db;
+package javaeetutorial.cdi.simplegreeting;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -11,6 +11,5 @@ import javax.inject.Qualifier;
 
 @Qualifier
 @Retention(RUNTIME)
-@Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface UserDatabase {
-}
+@Target({TYPE, METHOD, FIELD, PARAMETER})
+public @interface Informal {}

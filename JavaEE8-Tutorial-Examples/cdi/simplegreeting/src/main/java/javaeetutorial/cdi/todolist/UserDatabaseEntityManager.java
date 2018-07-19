@@ -1,4 +1,4 @@
-package javaeetutorial.todolist.db;
+package javaeetutorial.cdi.todolist;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;

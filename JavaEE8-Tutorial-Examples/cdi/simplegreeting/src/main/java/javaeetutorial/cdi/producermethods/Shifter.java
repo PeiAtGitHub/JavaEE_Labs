@@ -1,4 +1,4 @@
-package javaeetutorial.producermethods;
+package javaeetutorial.cdi.producermethods;
 
 public class Shifter implements Coder {
 

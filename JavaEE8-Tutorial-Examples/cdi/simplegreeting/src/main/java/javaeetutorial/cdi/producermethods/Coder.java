@@ -1,4 +1,4 @@
-package javaeetutorial.producermethods;
+package javaeetutorial.cdi.producermethods;
 
 /**
  * Encode a String

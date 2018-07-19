@@ -1,4 +1,4 @@
-package javaeetutorial.todolist.entity;
+package javaeetutorial.cdi.todolist;
 
 import java.io.Serializable;
 import java.util.Date;

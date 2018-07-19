@@ -1,4 +1,4 @@
-package javaeetutorial.simplegreeting;
+package javaeetutorial.cdi.simplegreeting;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

@@ -1,4 +1,4 @@
-package javaeetutorial.producermethods;
+package javaeetutorial.cdi.producermethods;
 
 /**
  * This dummy coder does nothing but display the arguments.

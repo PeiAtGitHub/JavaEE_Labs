@@ -1,10 +1,8 @@
-package javaeetutorial.todolist.web;
+package javaeetutorial.cdi.todolist;
 
 import java.io.Serializable;
 import java.util.List;
 
-import javaeetutorial.todolist.ejb.RequestBean;
-import javaeetutorial.todolist.entity.ToDo;
 import lombok.Getter;
 import lombok.Setter;
 

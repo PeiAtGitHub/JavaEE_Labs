@@ -1,4 +1,4 @@
-package javaeetutorial.guessnumber;
+package javaeetutorial.cdi.guessnumber;
 
 import java.lang.annotation.Documented;
 import static java.lang.annotation.ElementType.FIELD;
@@ -14,5 +14,5 @@ import javax.inject.Qualifier;
 @Retention(RUNTIME)
 @Documented
 @Qualifier
-public @interface MaxNumber {
+public @interface Random {
 }
