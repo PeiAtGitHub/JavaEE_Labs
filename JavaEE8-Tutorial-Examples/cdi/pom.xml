@@ -14,7 +14,6 @@
     <name>cdi</name>
   
     <modules>
-        <module>billpayment</module>
         <module>simplegreeting</module>
     </modules>
     

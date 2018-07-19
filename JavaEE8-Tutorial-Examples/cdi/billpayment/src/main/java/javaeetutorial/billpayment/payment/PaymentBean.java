@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.billpayment.payment;
 
 import java.io.Serializable;
@@ -28,8 +21,7 @@ import javax.validation.constraints.Digits;
 @SessionScoped
 public class PaymentBean implements Serializable {
 
-    private static final Logger logger =
-            Logger.getLogger(PaymentBean.class.getCanonicalName());
+    private static final Logger logger = Logger.getLogger(PaymentBean.class.getCanonicalName());
     private static final long serialVersionUID = 7130389273118012929L;
 
     @Inject
