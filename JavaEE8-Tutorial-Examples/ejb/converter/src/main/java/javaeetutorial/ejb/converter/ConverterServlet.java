@@ -1,9 +1,9 @@
-package javaeetutorial.converter.web;
+package javaeetutorial.ejb.converter;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
-import javaeetutorial.converter.ejb.ConverterBean;
+
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

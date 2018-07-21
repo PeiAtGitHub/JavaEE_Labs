@@ -1,4 +1,4 @@
-package javaeetutorial.converter.ejb;
+package javaeetutorial.ejb.converter;
 
 import java.math.BigDecimal;
 import javax.ejb.Stateless;
