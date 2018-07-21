@@ -1,4 +1,4 @@
-package javaeetutorial.counter.ejb;
+package javaeetutorial.ejb.counter;
 
 import javax.ejb.Singleton;
 
