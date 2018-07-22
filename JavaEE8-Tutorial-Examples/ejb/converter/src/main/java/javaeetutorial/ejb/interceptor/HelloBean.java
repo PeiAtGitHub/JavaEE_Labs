@@ -1,4 +1,4 @@
-package javaeetutorial.interceptor.ejb;
+package javaeetutorial.ejb.interceptor;
 
 import javax.ejb.Stateless;
 import javax.inject.Named;

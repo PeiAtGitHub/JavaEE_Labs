@@ -1,4 +1,4 @@
-package javaeetutorial.interceptor.ejb;
+package javaeetutorial.ejb.interceptor;
 
 import java.util.logging.Logger;
 import javax.interceptor.AroundInvoke;
