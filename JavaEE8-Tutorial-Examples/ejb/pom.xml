@@ -16,7 +16,6 @@
         <module>cart</module>
         <module>converter</module>
         <module>helloservice</module>
-        <module>interceptor</module>
         <module>standalone</module>
         <module>timersession</module>
     </modules>
