@@ -6,7 +6,7 @@
     <artifactId>helloservice-war</artifactId>
     <packaging>war</packaging>
     <name>helloservice-war</name>
-    <description>Simple example JAX-WS web service.</description>
+    <description>Example JAX-WS web service.</description>
 
     <parent>
         <groupId>org.glassfish.javaeetutorial</groupId>

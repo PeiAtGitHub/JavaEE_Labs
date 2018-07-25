@@ -7,9 +7,6 @@
 
     <name>hello-appclient</name>
 
-    <properties>
-    </properties>
-
     <parent>
         <groupId>org.glassfish.javaeetutorial</groupId>
         <artifactId>jaxws</artifactId>
@@ -42,6 +39,9 @@
                             <goal>wsimport</goal>
                         </goals>
                         <configuration>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
                             <wsdlDirectory>${basedir}/../helloservice-war/target/generated-sources/wsdl</wsdlDirectory>
                             <wsdlFiles>
                                 <wsdlFile>HelloService.wsdl</wsdlFile>
