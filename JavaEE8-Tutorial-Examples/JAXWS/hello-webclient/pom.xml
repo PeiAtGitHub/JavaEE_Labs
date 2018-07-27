@@ -9,7 +9,7 @@
     
     <parent>
         <groupId>org.glassfish.javaeetutorial</groupId>
-        <artifactId>jaxws</artifactId>
+        <artifactId>JAXWS</artifactId>
         <version>8.0</version>
     </parent>
     
