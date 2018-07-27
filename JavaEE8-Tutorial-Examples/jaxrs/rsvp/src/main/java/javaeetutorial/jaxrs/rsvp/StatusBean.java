@@ -1,8 +1,8 @@
-package javaeetutorial.rsvp.ejb;
+package javaeetutorial.jaxrs.rsvp;
 
 import java.util.List;
 import java.util.logging.Logger;
-import javaeetutorial.rsvp.entity.Event;
+
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;

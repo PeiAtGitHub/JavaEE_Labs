@@ -1,4 +1,4 @@
-package javaeetutorial.customer.resource;
+package javaeetutorial.jaxrs.customer;
 
 import java.util.HashSet;
 import java.util.Set;

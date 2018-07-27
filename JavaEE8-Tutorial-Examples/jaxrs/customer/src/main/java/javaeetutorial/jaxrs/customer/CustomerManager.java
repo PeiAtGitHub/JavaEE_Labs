@@ -1,8 +1,8 @@
-package javaeetutorial.customer.ejb;
+package javaeetutorial.jaxrs.customer;
 
 import java.io.Serializable;
 import java.util.List;
-import javaeetutorial.customer.data.Customer;
+
 import lombok.Getter;
 import lombok.Setter;
 

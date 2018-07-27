@@ -1,12 +1,10 @@
-package javaeetutorial.rsvp.web;
+package javaeetutorial.jaxrs.rsvp;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javaeetutorial.rsvp.entity.Event;
-import javaeetutorial.rsvp.entity.Person;
-import javaeetutorial.rsvp.util.ResponseEnum;
+
 import lombok.Getter;
 import lombok.Setter;
 

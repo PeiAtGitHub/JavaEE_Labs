@@ -1,12 +1,11 @@
-package javaeetutorial.customer.resource;
+package javaeetutorial.jaxrs.customer;
 
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javaeetutorial.customer.data.Address;
-import javaeetutorial.customer.data.Customer;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

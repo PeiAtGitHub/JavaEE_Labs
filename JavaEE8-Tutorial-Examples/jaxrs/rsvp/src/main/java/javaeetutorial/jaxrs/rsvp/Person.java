@@ -1,4 +1,4 @@
-package javaeetutorial.rsvp.entity;
+package javaeetutorial.jaxrs.rsvp;
 
 import java.io.Serializable;
 import java.util.ArrayList;

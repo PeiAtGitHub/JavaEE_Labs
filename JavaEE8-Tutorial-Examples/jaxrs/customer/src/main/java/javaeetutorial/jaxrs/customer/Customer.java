@@ -1,4 +1,4 @@
-package javaeetutorial.customer.data;
+package javaeetutorial.jaxrs.customer;
 
 import java.io.Serializable;
 import java.util.logging.Level;

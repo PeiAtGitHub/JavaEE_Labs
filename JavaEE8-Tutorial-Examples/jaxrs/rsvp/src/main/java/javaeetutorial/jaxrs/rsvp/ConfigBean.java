@@ -1,12 +1,9 @@
-package javaeetutorial.rsvp.ejb;
+package javaeetutorial.jaxrs.rsvp;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Logger;
-import javaeetutorial.rsvp.entity.Event;
-import javaeetutorial.rsvp.entity.Person;
-import javaeetutorial.rsvp.entity.Response;
-import javaeetutorial.rsvp.util.ResponseEnum;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;

@@ -1,9 +1,8 @@
-package javaeetutorial.rsvp.ejb;
+package javaeetutorial.jaxrs.rsvp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javaeetutorial.rsvp.entity.Response;
-import javaeetutorial.rsvp.util.ResponseEnum;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

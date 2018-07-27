@@ -1,7 +1,7 @@
-package javaeetutorial.rsvp.entity;
+package javaeetutorial.jaxrs.rsvp;
 
 import java.io.Serializable;
-import javaeetutorial.rsvp.util.ResponseEnum;
+
 import lombok.Getter;
 import lombok.Setter;
 

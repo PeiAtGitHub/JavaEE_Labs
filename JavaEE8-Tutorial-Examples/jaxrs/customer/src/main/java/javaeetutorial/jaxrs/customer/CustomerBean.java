@@ -1,9 +1,9 @@
-package javaeetutorial.customer.ejb;
+package javaeetutorial.jaxrs.customer;
 
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javaeetutorial.customer.data.Customer;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;

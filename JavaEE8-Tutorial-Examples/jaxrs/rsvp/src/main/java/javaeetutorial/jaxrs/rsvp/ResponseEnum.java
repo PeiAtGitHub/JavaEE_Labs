@@ -1,4 +1,4 @@
-package javaeetutorial.rsvp.util;
+package javaeetutorial.jaxrs.rsvp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
