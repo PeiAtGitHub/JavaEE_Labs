@@ -63,7 +63,7 @@
                 </os>
             </activation>
             <properties>
-                <glassfish.home.prefix>${user.home}/mymymy/SWs/java_ee_sdk-8</glassfish.home.prefix>
+                <glassfish.home.prefix>${user.home}/</glassfish.home.prefix>
                 <glassfish.executables.suffix />
             </properties>
         </profile>
@@ -107,7 +107,7 @@
         <module>connectors</module>
         <module>ejb</module>
         <module>jaxrs</module>
-        <module>jaxws</module>
+        <module>JAXWS</module>
         <module>jms</module>
         <module>persistence</module>
         <module>security</module>

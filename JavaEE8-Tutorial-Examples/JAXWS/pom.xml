@@ -2,9 +2,9 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>org.glassfish.javaeetutorial</groupId>
-    <artifactId>jaxws</artifactId>
+    <artifactId>JAXWS</artifactId>
     <packaging>pom</packaging>
-    <name>jaxws</name>
+    <name>JAXWS</name>
   
     <parent>
         <groupId>org.glassfish.javaeetutorial</groupId>
