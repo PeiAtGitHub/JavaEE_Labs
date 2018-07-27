@@ -1,14 +1,10 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.rsvp.entity;
 
 import java.io.Serializable;
 import javaeetutorial.rsvp.util.ResponseEnum;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,17 +18,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-@NamedQuery(name="rsvp.entity.Response.findResponseByEventAndPerson",
-            query="SELECT r " + 
-            "FROM Response r " +
-            "JOIN r.event e " +
-            "JOIN r.person p " +
-            "WHERE e.id = :eventId AND p.id = :personId")
-
+@NamedQuery(name = "rsvp.entity.Response.findResponseByEventAndPerson", 
+            query = "SELECT r FROM Response r JOIN r.event e JOIN r.person p WHERE e.id = :eventId AND p.id = :personId")
 @XmlRootElement(name = "Response")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
+@Getter @Setter
 public class Response implements Serializable {
+    
     private static final long serialVersionUID = -8188690304868834266L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -61,14 +54,12 @@ public class Response implements Serializable {
         this.response = ResponseEnum.NOT_RESPONDED;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getResponseText() {
+        return response.getLabel();
     }
-
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -94,49 +85,4 @@ public class Response implements Serializable {
         return "rsvp.entity.Response[id=" + id + "]";
     }
 
-    /**
-     * @return the event
-     */
-    public Event getEvent() {
-        return event;
-    }
-
-    /**
-     * @param event the event to set
-     */
-    public void setEvent(Event event) {
-        this.event = event;
-    }
-
-    /**
-     * @return the person
-     */
-    public Person getPerson() {
-        return person;
-    }
-
-    /**
-     * @param person the person to set
-     */
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    /**
-     * @return the response
-     */
-    public ResponseEnum getResponse() {
-        return response;
-    }
-
-    /**
-     * @param response the response to set
-     */
-    public void setResponse(ResponseEnum response) {
-        this.response = response;
-    }
-
-    public String getResponseText() {
-        return response.getLabel();
-    }
 }

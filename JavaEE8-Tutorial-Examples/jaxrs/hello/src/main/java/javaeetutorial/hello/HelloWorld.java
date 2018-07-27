@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.hello;
 
 import javax.ws.rs.Consumes;
@@ -16,21 +9,13 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 
 /**
- * Root resource (exposed at "helloworld" path)
+ * Root resource (exposed at "helloworld")
  */
 @Path("helloworld")
 public class HelloWorld {
     @Context
     private UriInfo context;
 
-    /** Creates a new instance of HelloWorld */
-    public HelloWorld() {
-    }
-
-    /**
-     * Retrieves representation of an instance of helloWorld.HelloWorld
-     * @return an instance of java.lang.String
-     */
     @GET
     @Produces("text/html")
     public String getHtml() {
@@ -39,7 +24,6 @@ public class HelloWorld {
 
     /**
      * PUT method for updating or creating an instance of HelloWorld
-     * @param content representation for the resource
      */
     @PUT
     @Consumes("text/html")

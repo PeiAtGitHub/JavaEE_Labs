@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.rsvp.ejb;
 
 import java.util.Calendar;
@@ -20,10 +13,6 @@ import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author ievans
- */
 @Singleton
 @Startup
 public class ConfigBean {
@@ -62,7 +51,7 @@ public class ConfigBean {
         duke.setFirstName("Duke");
         duke.setLastName("OfJava");
         em.persist(duke);
-        
+
         Person tux = new Person();
         tux.setFirstName("Tux");
         tux.setLastName("Penguin");
@@ -84,5 +73,5 @@ public class ConfigBean {
         tux.getResponses().add(tuxsResponse);
 
     }
-    
+
 }

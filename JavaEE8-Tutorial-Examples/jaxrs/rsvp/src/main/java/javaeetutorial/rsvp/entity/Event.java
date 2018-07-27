@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.rsvp.entity;
 
 import java.io.Serializable;
@@ -24,14 +17,18 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import lombok.Getter;
+import lombok.Setter;
 
-@NamedQuery(name="rsvp.entity.Event.getAllUpcomingEvents",
-            query="SELECT e FROM Event e ")
+@NamedQuery(name="rsvp.entity.Event.getAllUpcomingEvents", query="SELECT e FROM Event e ")
 @XmlRootElement(name = "Event")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
+@Getter @Setter
 public class Event implements Serializable {
+    
     private static final long serialVersionUID = -5584404843358199527L;
+    
     @OneToMany(mappedBy = "event")
     private List<Response> responses;
     @Id
@@ -50,71 +47,6 @@ public class Event implements Serializable {
         this.invitees = new ArrayList<>();
         this.responses = new ArrayList<>();
     }
-
-    /**
-     * Get the value of location
-     *
-     * @return the value of location
-     */
-    public String getLocation() {
-        return location;
-    }
-
-    /**
-     * Set the value of location
-     *
-     * @param location new value of location
-     */
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Get the value of name
-     *
-     * @return the value of name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Set the value of name
-     *
-     * @param name new value of name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    /**
-     * Get the value of invitees
-     *
-     * @return the value of invitees
-     */
-    public List<Person> getInvitees() {
-        return invitees;
-    }
-
-    /**
-     * Set the value of invitees
-     *
-     * @param invitees new value of invitees
-     */
-    public void setInvitees(List<Person> invitees) {
-        this.invitees = invitees;
-    }
-
 
     @Override
     public int hashCode() {
@@ -139,48 +71,6 @@ public class Event implements Serializable {
     @Override
     public String toString() {
         return "rsvp.entity.Event[id=" + id + "]";
-    }
-
-    /**
-     * @return the responses
-     */
-    public List<Response> getResponses() {
-        return responses;
-    }
-
-    /**
-     * @param responses the responses to set
-     */
-    public void setResponses(List<Response> responses) {
-        this.responses = responses;
-    }
-
-    /**
-     * @return the eventDate
-     */
-    public Date getEventDate() {
-        return eventDate;
-    }
-
-    /**
-     * @param eventDate the eventDate to set
-     */
-    public void setEventDate(Date eventDate) {
-        this.eventDate = eventDate;
-    }
-
-    /**
-     * @return the owner
-     */
-    public Person getOwner() {
-        return owner;
-    }
-
-    /**
-     * @param owner the owner to set
-     */
-    public void setOwner(Person owner) {
-        this.owner = owner;
     }
 
 }
