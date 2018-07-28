@@ -13,7 +13,6 @@
     
     <modules>
         <module>customer</module>
-        <module>hello</module>
         <module>rsvp</module>
     </modules>
     
