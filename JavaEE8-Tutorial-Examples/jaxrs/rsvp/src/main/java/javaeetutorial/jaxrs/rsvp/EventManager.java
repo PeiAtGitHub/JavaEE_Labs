@@ -14,7 +14,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 @Named
@@ -31,8 +30,7 @@ public class EventManager implements Serializable {
     @Setter
     private Response currentResponse;
     private Client client;
-    private final String baseUri = "http://localhost:8080/rsvp/webapi/status/";
-    private WebTarget target;
+    private final String baseUri = "http://localhost:8080/rsvp/rsvp-webapi/status/";
 
     @PostConstruct
     private void init() {

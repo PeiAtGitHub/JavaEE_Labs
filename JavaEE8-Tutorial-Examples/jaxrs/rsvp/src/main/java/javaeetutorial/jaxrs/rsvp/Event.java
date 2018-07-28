@@ -47,6 +47,12 @@ public class Event implements Serializable {
         this.invitees = new ArrayList<>();
         this.responses = new ArrayList<>();
     }
+    public Event(String name, String location) {
+        this.invitees = new ArrayList<>();
+        this.responses = new ArrayList<>();
+        this.name = name;
+        this.location = location;
+    }
 
     @Override
     public int hashCode() {

@@ -2,8 +2,6 @@ package javaeetutorial.jaxrs.rsvp;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.logging.Logger;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -16,59 +14,40 @@ public class ConfigBean {
 
     @PersistenceContext
     private EntityManager em;
-    private static final Logger logger = Logger.getLogger("javaeetutorial.rsvp.ejb.ConfigBean");
 
     @PostConstruct
     public void init() {
-        // create the event owner
-        Person dad = new Person();
-        dad.setFirstName("Father");
-        dad.setLastName("OfJava");
-        em.persist(dad);
 
-        // create the event
-        Event event = new Event();
-        event.setName("Duke's Birthday Party");
-        event.setLocation("Top of the Mark");
-        Calendar cal = new GregorianCalendar(2010, Calendar.MAY, 23, 19, 0);
-        event.setEventDate(cal.getTime());
+        Event event = new Event("Boss's birthday party", "Boss's house");
+        event.setEventDate(new GregorianCalendar(2010, Calendar.MAY, 23, 19, 0).getTime());
         em.persist(event);
 
+        Person eventOwner = new Person("Boss", "OfMGM");
+        em.persist(eventOwner);
         // set the relationships
-        dad.getOwnedEvents().add(event);
-        dad.getEvents().add(event);
-        event.setOwner(dad);
-        event.getInvitees().add(dad);
-        Response dadsResponse = new Response(event, dad, ResponseEnum.ATTENDING);
-        em.persist(dadsResponse);
-        event.getResponses().add(dadsResponse);
+        eventOwner.getOwnedEvents().add(event);
+        eventOwner.getEvents().add(event);
+        event.setOwner(eventOwner);
+        event.getInvitees().add(eventOwner);
+        Response ownersResponse = new Response(event, eventOwner, ResponseEnum.ATTENDING);
+        em.persist(ownersResponse);
+        event.getResponses().add(ownersResponse);
+        //
+        createInvitee("Tom", "Cat", event);
+        createInvitee("Jerry", "Mouse", event);
+    }
 
-        // create some invitees
-        Person duke = new Person();
-        duke.setFirstName("Duke");
-        duke.setLastName("OfJava");
-        em.persist(duke);
+    private void createInvitee(String fristName, String lastName, Event event) {
+        Person person = new Person(fristName, lastName);
+        em.persist(person);
 
-        Person tux = new Person();
-        tux.setFirstName("Tux");
-        tux.setLastName("Penguin");
-        em.persist(tux);
+        event.getInvitees().add(person);
+        person.getEvents().add(event);
 
-        // set the relationships
-        event.getInvitees().add(duke);
-        duke.getEvents().add(event);
-        Response dukesResponse = new Response(event, duke);
-        em.persist(dukesResponse);
-        event.getResponses().add(dukesResponse);
-        duke.getResponses().add(dukesResponse);
-
-        event.getInvitees().add(tux);
-        tux.getEvents().add(event);
-        Response tuxsResponse = new Response(event, tux);
-        em.persist(tuxsResponse);
-        event.getResponses().add(tuxsResponse);
-        tux.getResponses().add(tuxsResponse);
-
+        Response resp = new Response(event, person);
+        em.persist(resp);
+        event.getResponses().add(resp);
+        person.getResponses().add(resp);
     }
 
 }

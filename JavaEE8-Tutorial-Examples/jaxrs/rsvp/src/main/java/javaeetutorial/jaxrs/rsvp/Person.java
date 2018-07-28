@@ -45,6 +45,14 @@ public class Person implements Serializable {
         this.ownedEvents = new ArrayList<>();
         this.responses = new ArrayList<>();
     }
+    
+    public Person(String firstName, String lastName) {
+        this.events = new ArrayList<>();
+        this.ownedEvents = new ArrayList<>();
+        this.responses = new ArrayList<>();
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Override
     public int hashCode() {

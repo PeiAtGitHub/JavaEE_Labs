@@ -2,7 +2,7 @@ package javaeetutorial.jaxrs.rsvp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import static javaeetutorial.jaxrs.rsvp.ResponseEnum.*;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,17 +38,14 @@ public class ResponseBean {
                 new Object[] { userResponse, eventId, personId });
         Response response = (Response) em.createNamedQuery("rsvp.entity.Response.findResponseByEventAndPerson")
                 .setParameter("eventId", eventId).setParameter("personId", personId).getSingleResult();
-        if (userResponse.equals(ResponseEnum.ATTENDING.getLabel())
-                && !response.getResponse().equals(ResponseEnum.ATTENDING)) {
-            response.setResponse(ResponseEnum.ATTENDING);
+        if (userResponse.equals(ATTENDING.getLabel()) && !response.getResponse().equals(ATTENDING)) {
+            response.setResponse(ATTENDING);
             em.merge(response);
-        } else if (userResponse.equals(ResponseEnum.NOT_ATTENDING.getLabel())
-                && !response.getResponse().equals(ResponseEnum.NOT_ATTENDING)) {
-            response.setResponse(ResponseEnum.NOT_ATTENDING);
+        } else if (userResponse.equals(NOT_ATTENDING.getLabel()) && !response.getResponse().equals(NOT_ATTENDING)) {
+            response.setResponse(NOT_ATTENDING);
             em.merge(response);
-        } else if (userResponse.equals(ResponseEnum.MAYBE_ATTENDING.getLabel())
-                && !response.getResponse().equals(ResponseEnum.MAYBE_ATTENDING)) {
-            response.setResponse(ResponseEnum.MAYBE_ATTENDING);
+        } else if (userResponse.equals(MAYBE_ATTENDING.getLabel()) && !response.getResponse().equals(MAYBE_ATTENDING)) {
+            response.setResponse(MAYBE_ATTENDING);
             em.merge(response);
         }
     }

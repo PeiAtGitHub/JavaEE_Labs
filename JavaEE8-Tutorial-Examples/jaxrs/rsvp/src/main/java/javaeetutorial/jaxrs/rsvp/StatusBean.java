@@ -28,8 +28,7 @@ public class StatusBean {
     @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     @Path("{eventId}/")
     public Event getEvent(@PathParam("eventId") Long eventId) {
-        Event event = em.find(Event.class, eventId);
-        return event;
+        return em.find(Event.class, eventId);
     }
 
     @GET

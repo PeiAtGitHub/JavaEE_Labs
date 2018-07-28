@@ -11,14 +11,16 @@
         current response for <h:outputText value="#{eventManager.currentEvent.name}" /></h1>
         <h:form>
             <p>Manage your response here.</p>
-            <h:selectOneMenu id="changeResponseMenu" value="#{eventManager.currentResponse.response}" title="Your response">
+            <span><h:selectOneMenu id="changeResponseMenu" value="#{eventManager.currentResponse.response}" title="Your response">
                 <f:selectItems value="#{statusManager.statusValues}" var="status" itemValue="#{status}" itemLabel="#{status.label}" />
-            </h:selectOneMenu>
-            <h:commandLink action="#{statusManager.changeStatus(eventManager.currentResponse.response, eventManager.currentResponse.person, eventManager.currentEvent)}"
-                           value="Update your status" />
+            </h:selectOneMenu></span>
+            <span><h:commandLink action="#{statusManager.changeStatus(eventManager.currentResponse.response, eventManager.currentResponse.person, eventManager.currentEvent)}"
+                           value="Update your status" /></span>
         </h:form>
         <br />
-        <h:link outcome="index" value="Back to the main page." />
+        <h:link outcome="event" value="Back to Event page." />
+        <br /><br />
+        <h:link outcome="index" value="Back to Main page." />
     </h:body>
 </html>
 

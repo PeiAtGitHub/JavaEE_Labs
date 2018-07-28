@@ -17,7 +17,6 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.ResponseProcessingException;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,8 +31,7 @@ public class StatusManager implements Serializable {
     private Event event;
     private List<Event> events;
     private Client client;
-    private final String baseUri = "http://localhost:8080/rsvp/webapi";
-    private WebTarget target;
+    private final String baseUri = "http://localhost:8080/rsvp/rsvp-webapi";
 
     /**
      * Default constructor creates the JAX-RS client
@@ -66,16 +64,12 @@ public class StatusManager implements Serializable {
         } catch (WebApplicationException ex) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         } catch (ResponseProcessingException ex) {
-            logger.log(Level.SEVERE, "ReponseProcessingException thrown.");
-            logger.log(Level.SEVERE, "Error is {0}", ex.getMessage());
+            logger.log(Level.SEVERE, "ReponseProcessingException thrown: {0}", ex.getMessage());
         } catch (ProcessingException ex) {
-            logger.log(Level.SEVERE, "ProcessingException thrown.");
-            logger.log(Level.SEVERE, "Error is {0}", ex.getMessage());
+            logger.log(Level.SEVERE, "ProcessingException thrown: {0}", ex.getMessage());
         } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Error retrieving all events.");
-            logger.log(Level.SEVERE, "base URI is {0}", baseUri);
-            logger.log(Level.SEVERE, "path is {0}", "all");
-            logger.log(Level.SEVERE, "Exception is {0}", ex.getMessage());
+            logger.log(Level.SEVERE, "Error retrieving all events: {0}", ex.getMessage());
+            logger.log(Level.SEVERE, "base URI: {0}.", baseUri);
         }
         return returnedEvents;
     }
