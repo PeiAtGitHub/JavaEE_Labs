@@ -3,18 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.glassfish.javaeetutorial</groupId>
-    <artifactId>hello-webclient</artifactId>
+    <artifactId>helloservice-war</artifactId>
     <packaging>war</packaging>
-    <name>hello-webclient</name>
-    
+    <name>helloservice-war</name>
+    <description>Example JAX-WS web service.</description>
+
     <parent>
         <groupId>org.glassfish.javaeetutorial</groupId>
-        <artifactId>JAXWS</artifactId>
+        <artifactId>JAX-WS</artifactId>
         <version>8.0</version>
     </parent>
-    
+
     <build>
-        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
@@ -22,24 +22,32 @@
                 <version>${jaxws-maven-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>generate-wsdl</id>
+                        <phase>process-classes</phase>
                         <goals>
-                            <goal>wsimport</goal>
+                            <goal>wsgen</goal>
                         </goals>
                         <configuration>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            <wsdlDirectory>${basedir}/../helloservice-war/target/generated-sources/wsdl</wsdlDirectory>
-                            <wsdlFiles>
-                                <wsdlFile>HelloService.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/helloservice/HelloService?WSDL</wsdlLocation>
-                            <packageName>javaeetutorial.helloservice.endpoint</packageName>
+                            <sei>javaeetutorial.helloservice.Hello</sei>
+                            <genWsdl>true</genWsdl>
                         </configuration>
-                        <phase>generate-sources</phase>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <configuration>
+                    <deployables>
+                        <deployable>
+                        <properties>
+                            <context>helloservice</context>
+                        </properties>
+                        </deployable>
+                    </deployables>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
 </project>

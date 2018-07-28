@@ -102,12 +102,12 @@
         <module>archetypes</module>
         <module>batch</module>
         <module>case-studies</module>
-        <module>cdi</module>
+        <module>CDI</module>
         <module>concurrency</module>
         <module>connectors</module>
         <module>ejb</module>
         <module>JAX-RS</module>
-        <module>JAXWS</module>
+        <module>JAX-WS</module>
         <module>jms</module>
         <module>persistence</module>
         <module>security</module>
