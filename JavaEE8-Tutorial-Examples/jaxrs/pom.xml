@@ -12,7 +12,6 @@
     </parent>
     
     <modules>
-        <module>customer</module>
         <module>rsvp</module>
     </modules>
     
