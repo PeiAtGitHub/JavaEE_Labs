@@ -27,7 +27,7 @@ public class CustomerBean {
     private static final String CUSTOMER_CREATED = "customerCreated";
     private static final String CUSTOMER_ERROR = "customerError";
     
-    private static final String URL_CUSTOMER = "http://localhost:8080/JAX-RS/webapi/Customer";
+    private static final String URL_CUSTOMER = "http://localhost:8080/JAX-RS/customer-webapi/Customer";
 
     protected Client client;
 

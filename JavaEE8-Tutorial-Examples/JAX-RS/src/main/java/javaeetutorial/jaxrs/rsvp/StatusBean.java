@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
 public class StatusBean {
 
     private List<Event> allCurrentEvents;
-    private static final Logger logger = Logger.getLogger("javaeetutorial.rsvp.ejb.StatusBean");
+    private static final Logger logger = Logger.getLogger("javaeetutorial.jaxrs.rsvp.StatusBean");
 
     @PersistenceContext
     private EntityManager em;

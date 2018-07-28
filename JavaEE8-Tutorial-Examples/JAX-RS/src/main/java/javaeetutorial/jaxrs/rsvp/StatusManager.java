@@ -31,7 +31,7 @@ public class StatusManager implements Serializable {
     private Event event;
     private List<Event> events;
     private Client client;
-    private final String baseUri = "http://localhost:8080/rsvp/rsvp-webapi";
+    private final String baseUri = "http://localhost:8080/JAX-RS/rsvp-webapi";
 
     /**
      * Default constructor creates the JAX-RS client

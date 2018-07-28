@@ -106,7 +106,7 @@
         <module>concurrency</module>
         <module>connectors</module>
         <module>ejb</module>
-        <module>jaxrs</module>
+        <module>JAX-RS</module>
         <module>JAXWS</module>
         <module>jms</module>
         <module>persistence</module>

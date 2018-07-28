@@ -5,7 +5,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("/webapi")
+@ApplicationPath("/customer-webapi")
 public class CustomerApplication extends Application {
     
     @Override

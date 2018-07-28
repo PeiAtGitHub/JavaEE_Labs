@@ -30,7 +30,7 @@ public class EventManager implements Serializable {
     @Setter
     private Response currentResponse;
     private Client client;
-    private final String baseUri = "http://localhost:8080/rsvp/rsvp-webapi/status/";
+    private final String baseUri = "http://localhost:8080/JAX-RS/rsvp-webapi/status/";
 
     @PostConstruct
     private void init() {
