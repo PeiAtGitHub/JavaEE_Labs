@@ -1,8 +1,6 @@
 package javaeetutorial.jaxrs.customer;
 
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,28 +20,26 @@ import lombok.Setter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter @Setter
 public class Customer implements Serializable {
-    private static final Logger logger = Logger.getLogger(Customer.class.getName());
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @XmlAttribute(required=true) 
     protected int id;
     
     @XmlElement(required=true) 
-    protected String firstname;
+    protected String firstname = "DefaultFN";
     
     @XmlElement(required=true) 
-    protected String lastname;
+    protected String lastname = "DefaultLN";
     
     @XmlElement(required=true)
     @OneToOne
     protected Address address;
     
     @XmlElement(required=true)
-    protected String email;
+    protected String email = "defaultEm@somewhere.com";
  
     @XmlElement (required=true)
-    protected String phone;
+    protected String phone = "1234567890";
     
     public Customer() { 
         address = new Address();

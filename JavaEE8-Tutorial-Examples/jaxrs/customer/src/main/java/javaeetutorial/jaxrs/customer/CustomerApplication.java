@@ -7,10 +7,12 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("/webapi")
 public class CustomerApplication extends Application {
+    
     @Override
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> classes = new HashSet<>();
         classes.add(CustomerService.class); // register root resource
         return classes;
     }
+    
 }

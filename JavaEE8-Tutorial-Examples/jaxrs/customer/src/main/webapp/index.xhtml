@@ -7,6 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head><title>JAX-RS Customer example</title></h:head>
     <h:body>
+        <h3>Create a Customer</h3>
         <h:form id="customerForm">
             <h:panelGrid id="customerGrid" columns="3">
                 <h:outputLabel for="customerFirstNameInput" value="First name: " />
@@ -44,11 +45,12 @@
                 <h:outputLabel for="addressCountryInput" value="Country: " />
                 <h:inputText id="addressCountryInput" value="#{customerManager.customer.address.country}" />
                 <h:message for="addressCountryInput" />
-                
+                <br/>
                 <f:facet name="footer">
                     <h:panelGroup>
                         <h:commandButton id="createCustomerButton" action="#{customerBean.createCustomer(customerManager.customer)}" value="Create Customer" />
-                        <h:commandButton id="cancelButton" immediate="true" action="index" value="Cancel" /> 
+                        <br/><br/>
+                        <h:commandButton id="resetButton" immediate="true" action="index" value="Reset" /> 
                     </h:panelGroup>
                 </f:facet>
             </h:panelGrid>

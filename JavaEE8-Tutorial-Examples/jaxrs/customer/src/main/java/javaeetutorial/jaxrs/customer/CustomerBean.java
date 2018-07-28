@@ -18,13 +18,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-@Named
-@Stateless
+@Named @Stateless
 public class CustomerBean {
 
-    private static final String URL_CUSTOMER = "http://localhost:8080/customer/webapi/Customer";
-    protected Client client;
     private static final Logger logger = Logger.getLogger(CustomerBean.class.getName());
+
+    private static final String CUSTOMER_RETRIEVED = "customerRetrieved";
+    private static final String CUSTOMER_CREATED = "customerCreated";
+    private static final String CUSTOMER_ERROR = "customerError";
+    
+    private static final String URL_CUSTOMER = "http://localhost:8080/customer/webapi/Customer";
+
+    protected Client client;
 
     @PostConstruct
     private void init() {
@@ -38,32 +43,29 @@ public class CustomerBean {
 
     public String createCustomer(Customer customer) {
         if (customer == null) {
-            return "customerError";
+            return CUSTOMER_ERROR;
         }
-        String navigation;
+        
         Response response = client.target(URL_CUSTOMER).request(MediaType.APPLICATION_XML)
                 .post(Entity.entity(customer, MediaType.APPLICATION_XML), Response.class);
+        
         if (response.getStatus() == Status.CREATED.getStatusCode()) {
-            navigation = "customerCreated";
+            return CUSTOMER_CREATED;
         } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Could not create customer."));
             logger.log(Level.WARNING, "couldn''t create customer with id {0}. Status returned was {1}",
                     new Object[] { customer.getId(), response.getStatus() });
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage("Could not create customer."));
-            navigation = "customerError";
+            return CUSTOMER_ERROR;
         }
-        return navigation;
     }
 
     public String retrieveCustomer(String id) {
-        String navigation;
         Customer customer = client.target(URL_CUSTOMER).path(id).request(MediaType.APPLICATION_XML).get(Customer.class);
         if (customer == null) {
-            navigation = "customerError";
+            return CUSTOMER_ERROR;
         } else {
-            navigation = "customerRetrieved";
+            return CUSTOMER_RETRIEVED;
         }
-        return navigation;
     }
 
     public List<Customer> retrieveAllCustomers() {

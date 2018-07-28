@@ -21,26 +21,25 @@ import lombok.Setter;
 @Setter @Getter
 public class Address implements Serializable {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @XmlElement(required=true) 
-    protected int number;
+    protected int number = 1;
 
     @XmlElement(required=true)  
-    protected String street;
+    protected String street = "Some Str";
     
     @XmlElement(required=true)  
-    protected String city;
+    protected String city = "Some City";
     
     @XmlElement(required=true) 
-    protected String province;
+    protected String province = "Some Province";
     
     @XmlElement(required=true)  
-    protected String zip;
+    protected String zip = "12345";
     
     @XmlElement(required=true)
-    protected String country;
+    protected String country = "Some Country";
 
 }

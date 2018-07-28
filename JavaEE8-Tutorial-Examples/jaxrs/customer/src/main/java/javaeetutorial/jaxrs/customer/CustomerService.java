@@ -18,11 +18,12 @@ import javax.ws.rs.core.Response;
 /**
  * Customer Restful Service with CRUD methods
  */
-@Stateless
+@Stateless 
 @Path("/Customer")
 public class CustomerService {
 
     public static final Logger logger = Logger.getLogger(CustomerService.class.getCanonicalName());
+    
     @PersistenceContext
     private EntityManager em;
     private CriteriaBuilder cb;
