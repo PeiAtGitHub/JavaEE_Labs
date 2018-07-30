@@ -1,7 +1,7 @@
-package javaeetutorial.timersession.web;
+package javaeetutorial.ejb.timersession;
 
 import java.io.Serializable;
-import javaeetutorial.timersession.ejb.TimerSessionBean;
+
 import lombok.Setter;
 
 import javax.ejb.EJB;

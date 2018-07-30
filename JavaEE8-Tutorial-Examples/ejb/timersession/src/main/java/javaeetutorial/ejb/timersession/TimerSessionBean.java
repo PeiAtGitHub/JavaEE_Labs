@@ -1,4 +1,4 @@
-package javaeetutorial.timersession.ejb;
+package javaeetutorial.ejb.timersession;
 
 import java.util.Date;
 import java.util.logging.Level;
