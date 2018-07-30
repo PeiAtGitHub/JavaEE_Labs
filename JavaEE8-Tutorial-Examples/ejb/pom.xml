@@ -17,7 +17,6 @@
         <module>converter</module>
         <module>helloservice</module>
         <module>standalone</module>
-        <module>timersession</module>
     </modules>
     
     <build>
