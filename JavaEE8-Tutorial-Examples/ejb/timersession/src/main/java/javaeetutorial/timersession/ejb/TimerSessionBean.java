@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.timersession.ejb;
 
 import java.util.Date;
@@ -18,6 +11,8 @@ import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerService;
 
+import lombok.Setter;
+
 /**
  * TimerBean is a singleton session bean that creates a timer and prints out a
  * message when a timeout occurs.
@@ -29,35 +24,30 @@ public class TimerSessionBean {
     @Resource
     TimerService timerService;
 
+    @Setter
     private Date lastProgrammaticTimeout;
+    @Setter
     private Date lastAutomaticTimeout;
 
-    private static final Logger logger =
-            Logger.getLogger("timersession.ejb.TimerSessionBean");
+    private static final Logger logger = Logger.getLogger("timersession.ejb.TimerSessionBean");
 
     public void setTimer(long intervalDuration) {
-        logger.log(Level.INFO,
-                "Setting a programmatic timeout for {0} milliseconds from now.",
-                intervalDuration);
-        Timer timer = timerService.createTimer(intervalDuration,
-                "Created new programmatic timer");
+        logger.log(Level.INFO, "Setting a programmatic timeout for {0} milliseconds from now.", intervalDuration);
+        timerService.createTimer(intervalDuration, "Created new programmatic timer");
     }
 
     @Timeout
     public void programmaticTimeout(Timer timer) {
-        this.setLastProgrammaticTimeout(new Date());
         logger.info("Programmatic timeout occurred.");
+        this.setLastProgrammaticTimeout(new Date());
     }
 
     @Schedule(minute = "*/1", hour = "*", persistent = false)
     public void automaticTimeout() {
-        this.setLastAutomaticTimeout(new Date());
         logger.info("Automatic timeout occurred");
+        this.setLastAutomaticTimeout(new Date());
     }
 
-    /**
-     * @return the lastTimeout
-     */
     public String getLastProgrammaticTimeout() {
         if (lastProgrammaticTimeout != null) {
             return lastProgrammaticTimeout.toString();
@@ -66,16 +56,6 @@ public class TimerSessionBean {
         }
     }
 
-    /**
-     * @param lastTimeout the lastTimeout to set
-     */
-    public void setLastProgrammaticTimeout(Date lastTimeout) {
-        this.lastProgrammaticTimeout = lastTimeout;
-    }
-
-    /**
-     * @return the lastAutomaticTimeout
-     */
     public String getLastAutomaticTimeout() {
         if (lastAutomaticTimeout != null) {
             return lastAutomaticTimeout.toString();
@@ -84,10 +64,4 @@ public class TimerSessionBean {
         }
     }
 
-    /**
-     * @param lastAutomaticTimeout the lastAutomaticTimeout to set
-     */
-    public void setLastAutomaticTimeout(Date lastAutomaticTimeout) {
-        this.lastAutomaticTimeout = lastAutomaticTimeout;
-    }
 }

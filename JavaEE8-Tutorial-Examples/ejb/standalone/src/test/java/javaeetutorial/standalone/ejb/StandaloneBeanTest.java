@@ -15,15 +15,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- *
- * @author ian
- */
 public class StandaloneBeanTest {
 
     private EJBContainer ec;
     private Context ctx;
-    private static final Logger logger = Logger.getLogger("standalone.ejb");
 
     public StandaloneBeanTest() {
     }
@@ -41,17 +36,9 @@ public class StandaloneBeanTest {
         }
     }
 
-    /**
-     * Test of returnMessage method, of class StandaloneBean.
-     * @throws java.lang.Exception
-     */
     @Test
     public void testReturnMessage() throws Exception {
-        logger.info("Testing standalone.ejb.StandaloneBean.returnMessage()");
-        StandaloneBean instance = 
-                (StandaloneBean) ctx.lookup("java:global/classes/StandaloneBean");
-        String expResult = "Greetings!";
-        String result = instance.returnMessage();
-        assertEquals(expResult, result);
+        StandaloneBean instance = (StandaloneBean) ctx.lookup("java:global/classes/StandaloneBean");
+        assertEquals("Greetings!", instance.returnMessage());
     }
 }
