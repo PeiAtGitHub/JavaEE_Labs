@@ -12,7 +12,7 @@
     <artifactId>async-war</artifactId>
     <packaging>war</packaging>
     <name>${project.artifactId}</name>
-    <description>Session bean asynchronous method invocation example.</description>
+    <description>Session bean Async method invocation example.</description>
     
     <build>
         <finalName>${project.artifactId}</finalName>
