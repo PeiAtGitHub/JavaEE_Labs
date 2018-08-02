@@ -18,15 +18,15 @@ public class CartClient {
         try {
             // initialize
             cart.initialize("SomeBody", "123");
-            cart.addBook("Infinite Jest");
-            cart.addBook("Bel Canto");
-            cart.addBook("Kafka on the Shore");
+            cart.addItem("Beef");
+            cart.addItem("Potato");
+            cart.addItem("Tomato");
 
-            // list cart content
-            System.out.println("Books in the cart: " + cart.getContents());
+            // list cart items
+            System.out.println("Items in the cart: " + cart.getContents());
             
             // remove item from cart
-            cart.removeBook("Gravity's Rainbow");
+            cart.removeItem("Cucumber");
             cart.remove();
 
             System.exit(0);

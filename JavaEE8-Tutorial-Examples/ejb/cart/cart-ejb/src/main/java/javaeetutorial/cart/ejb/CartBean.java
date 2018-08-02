@@ -45,14 +45,14 @@ public class CartBean implements Cart, Serializable {
     }
 
     @Override
-    public void addBook(String title) {
-        contents.add(title);
+    public void addItem(String name) {
+        contents.add(name);
     }
 
     @Override
-    public void removeBook(String title) throws CartException {
-        if (contents.remove(title) == false) {
-            throw new CartException("\"" + title + "\" not in cart.");
+    public void removeItem(String name) throws CartException {
+        if (contents.remove(name) == false) {
+            throw new CartException("\"" + name + "\" not in cart.");
         }
     }
 

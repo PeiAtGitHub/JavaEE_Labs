@@ -11,9 +11,9 @@ public interface Cart {
 
     public void initialize(String person, String id) throws CartException;
 
-    public void addBook(String title);
+    public void addItem(String name);
 
-    public void removeBook(String title) throws CartException;
+    public void removeItem(String name) throws CartException;
 
     public List<String> getContents();
 
