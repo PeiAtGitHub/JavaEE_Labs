@@ -12,7 +12,7 @@
     </parent>
     
     <modules>
-        <module>async</module>
+        <module>AsyncMethodInvocation</module>
         <module>cart</module>
         <module>converter</module>
         <module>helloservice</module>
