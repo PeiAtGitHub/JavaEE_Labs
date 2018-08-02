@@ -1,6 +1,5 @@
 package javaeetutorial.ejb.async.webclient;
 
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.Future;
