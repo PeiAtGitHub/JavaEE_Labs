@@ -1,4 +1,4 @@
-package javaeetutorial.ejb.async.server;
+package javaeetutorial.ejb.simulated.mail.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import java.net.Socket;
  */
 public class Server implements Runnable {
     
-    public final static int PORT = 3025;
+    private final static int PORT = 3025;
     private final Socket client;
     
     public static void main(String[] args) throws IOException {

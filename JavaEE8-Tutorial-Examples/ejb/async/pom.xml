@@ -14,6 +14,6 @@
 
     <modules>
         <module>async-war</module>
-        <module>async-smtpd</module>
+        <module>mail-server</module>
     </modules>
 </project>

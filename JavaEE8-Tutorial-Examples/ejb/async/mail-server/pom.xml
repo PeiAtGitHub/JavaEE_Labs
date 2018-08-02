@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.glassfish.javaeetutorial</groupId>
-    <artifactId>async-smtpd</artifactId>
+    <artifactId>mail-server</artifactId>
     <packaging>jar</packaging>
     
     <parent>
@@ -19,7 +19,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${maven.exec.plugin.version}</version>
                 <configuration>
-                    <mainClass>javaeetutorial.ejb.async.server.Server</mainClass>
+                    <mainClass>javaeetutorial.ejb.simulated.mail.server.Server</mainClass>
                 </configuration>
             </plugin>
             <plugin>
