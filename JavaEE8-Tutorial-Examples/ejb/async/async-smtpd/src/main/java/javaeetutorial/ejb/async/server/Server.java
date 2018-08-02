@@ -1,4 +1,4 @@
-package javaeetutorial.asyncsmtpd;
+package javaeetutorial.ejb.async.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,9 +7,12 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * A simulated email server
+ */
 public class Server implements Runnable {
     
-    private final static int PORT = 3025;
+    public final static int PORT = 3025;
     private final Socket client;
     
     public static void main(String[] args) throws IOException {

@@ -19,7 +19,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${maven.exec.plugin.version}</version>
                 <configuration>
-                    <mainClass>javaeetutorial.asyncsmtpd.Server</mainClass>
+                    <mainClass>javaeetutorial.ejb.async.server.Server</mainClass>
                 </configuration>
             </plugin>
             <plugin>
