@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.cart.ejb;
 
 import java.io.Serializable;
@@ -25,11 +18,10 @@ public class CartBean implements Cart, Serializable {
     @Override
     public void initialize(String person) throws BookException {
         if (person == null) {
-            throw new BookException("Null person not allowed.");
+            throw new BookException("Person is Null.");
         } else {
             customerName = person;
         }
-
         customerId = "0";
         contents = new ArrayList<>();
     }
@@ -37,7 +29,7 @@ public class CartBean implements Cart, Serializable {
     @Override
     public void initialize(String person, String id) throws BookException {
         if (person == null) {
-            throw new BookException("Null person not allowed.");
+            throw new BookException("Person is Null.");
         } else {
             customerName = person;
         }
@@ -59,9 +51,7 @@ public class CartBean implements Cart, Serializable {
 
     @Override
     public void removeBook(String title) throws BookException {
-        boolean result = contents.remove(title);
-
-        if (result == false) {
+        if (contents.remove(title) == false) {
             throw new BookException("\"" + title + "\" not in cart.");
         }
     }
