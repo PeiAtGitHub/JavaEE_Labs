@@ -3,9 +3,9 @@
   
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.glassfish.javaeetutorial</groupId>
-    <artifactId>cart</artifactId>
+    <artifactId>ShoppingCart</artifactId>
     <packaging>pom</packaging>
-    <name>cart</name>
+    <name>ShoppingCart</name>
   
     <parent>
         <artifactId>ejb</artifactId>

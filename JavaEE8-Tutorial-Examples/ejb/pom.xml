@@ -13,7 +13,7 @@
     
     <modules>
         <module>AsyncMethodInvocation</module>
-        <module>cart</module>
+        <module>ShoppingCart</module>
         <module>converter</module>
         <module>helloservice</module>
         <module>standalone</module>
