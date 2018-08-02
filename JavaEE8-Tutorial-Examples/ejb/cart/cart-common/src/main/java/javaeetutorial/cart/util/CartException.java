@@ -1,13 +1,13 @@
 package javaeetutorial.cart.util;
 
-public class BookException extends Exception {
+public class CartException extends Exception {
     
     private static final long serialVersionUID = 6274585742564840905L;
     
-    public BookException() {
+    public CartException() {
     }
 
-    public BookException(String msg) {
+    public CartException(String msg) {
         super(msg);
     }
 }

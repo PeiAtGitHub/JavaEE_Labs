@@ -3,7 +3,7 @@ package javaeetutorial.cart.ejb;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javaeetutorial.cart.util.BookException;
+import javaeetutorial.cart.util.CartException;
 import javaeetutorial.cart.util.IdVerifier;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
@@ -16,9 +16,9 @@ public class CartBean implements Cart, Serializable {
     List<String> contents;
 
     @Override
-    public void initialize(String person) throws BookException {
+    public void initialize(String person) throws CartException {
         if (person == null) {
-            throw new BookException("Person is Null.");
+            throw new CartException("Person is Null.");
         } else {
             customerName = person;
         }
@@ -27,9 +27,9 @@ public class CartBean implements Cart, Serializable {
     }
 
     @Override
-    public void initialize(String person, String id) throws BookException {
+    public void initialize(String person, String id) throws CartException {
         if (person == null) {
-            throw new BookException("Person is Null.");
+            throw new CartException("Person is Null.");
         } else {
             customerName = person;
         }
@@ -38,7 +38,7 @@ public class CartBean implements Cart, Serializable {
         if (idChecker.validate(id)) {
             customerId = id;
         } else {
-            throw new BookException("Invalid id: " + id);
+            throw new CartException("Invalid id: " + id);
         }
 
         contents = new ArrayList<>();
@@ -50,9 +50,9 @@ public class CartBean implements Cart, Serializable {
     }
 
     @Override
-    public void removeBook(String title) throws BookException {
+    public void removeBook(String title) throws CartException {
         if (contents.remove(title) == false) {
-            throw new BookException("\"" + title + "\" not in cart.");
+            throw new CartException("\"" + title + "\" not in cart.");
         }
     }
 

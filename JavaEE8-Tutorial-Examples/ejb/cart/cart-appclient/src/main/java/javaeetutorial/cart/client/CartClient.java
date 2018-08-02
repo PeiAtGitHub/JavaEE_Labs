@@ -3,7 +3,7 @@ package javaeetutorial.cart.client;
 import javax.ejb.EJB;
 
 import javaeetutorial.cart.ejb.Cart;
-import javaeetutorial.cart.util.BookException;
+import javaeetutorial.cart.util.CartException;
 
 public class CartClient {
 
@@ -30,7 +30,7 @@ public class CartClient {
             cart.remove();
 
             System.exit(0);
-        } catch (BookException ex) {
+        } catch (CartException ex) {
             System.err.println("Caught a BookException: " + ex.getMessage());
             System.exit(0);
         }
