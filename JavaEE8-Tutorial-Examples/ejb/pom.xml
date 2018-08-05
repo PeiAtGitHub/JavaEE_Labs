@@ -12,11 +12,10 @@
     </parent>
     
     <modules>
-        <module>AsyncMethodInvocation</module>
-        <module>ShoppingCart</module>
         <module>SomeEjbExamples</module>
-        <module>helloservice</module>
-        <module>standalone</module>
+        <module>ShoppingCart</module>
+        <module>AsyncMethodInvocation</module>
+        <module>Standalone</module>
     </modules>
     
     <build>

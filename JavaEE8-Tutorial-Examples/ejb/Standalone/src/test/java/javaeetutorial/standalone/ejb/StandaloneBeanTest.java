@@ -1,13 +1,5 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.standalone.ejb;
 
-import java.util.logging.Logger;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.Context;
 import org.junit.After;
@@ -19,9 +11,6 @@ public class StandaloneBeanTest {
 
     private EJBContainer ec;
     private Context ctx;
-
-    public StandaloneBeanTest() {
-    }
 
     @Before
     public void setUp() {
