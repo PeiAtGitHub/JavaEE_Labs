@@ -9,7 +9,7 @@
 
     <parent>
       <groupId>org.glassfish.javaeetutorial</groupId>
-      <artifactId>persistence</artifactId>
+      <artifactId>Persistence</artifactId>
       <version>8.0</version>
     </parent>
     <build>

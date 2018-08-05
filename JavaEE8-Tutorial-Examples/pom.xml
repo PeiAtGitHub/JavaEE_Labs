@@ -46,9 +46,7 @@
         <profile>
             <id>windows</id>
             <activation>
-                <os>
-                    <family>windows</family>
-                </os>
+                <os><family>windows</family></os>
             </activation>
             <properties>
                 <glassfish.home.prefix>C:\</glassfish.home.prefix>
@@ -58,12 +56,10 @@
         <profile>
             <id>unix</id>
             <activation>
-                <os>
-                    <family>unix</family>
-                </os>
+                <os><family>unix</family></os>
             </activation>
             <properties>
-                <glassfish.home.prefix></glassfish.home.prefix>
+                <glassfish.home.prefix>${user.home}/</glassfish.home.prefix>
                 <glassfish.executables.suffix />
             </properties>
         </profile>
@@ -109,7 +105,7 @@
         <module>JAX-RS</module>
         <module>JAX-WS</module>
         <module>jms</module>
-        <module>persistence</module>
+        <module>Persistence</module>
         <module>security</module>
         <module>Websocket</module>
         <module>Servlet</module>
