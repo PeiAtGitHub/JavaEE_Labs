@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.addressbook.web.util;
 
 import java.util.List;
@@ -13,6 +6,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class JsfUtil {
     
@@ -32,7 +27,7 @@ public class JsfUtil {
     
     public static void addErrorMessage(Exception ex, String defaultMsg) {
         String msg = ex.getLocalizedMessage();
-        if (msg != null && msg.length() > 0) {
+        if (StringUtils.isNotEmpty(msg)) {
             addErrorMessage(msg);
         } else {
             addErrorMessage(defaultMsg);
@@ -46,22 +41,23 @@ public class JsfUtil {
     }
 
     public static void addErrorMessage(String msg) {
-        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg);
-        FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+        FacesContext.getCurrentInstance().addMessage(null, 
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg));
     }
 
     public static void addSuccessMessage(String msg) {
-        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg);
-        FacesContext.getCurrentInstance().addMessage("successInfo", facesMsg);
+        FacesContext.getCurrentInstance().addMessage("successInfo", 
+                new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
     }
     
     public static String getRequestParameter(String key) {
         return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get(key);
     }
     
-    public static Object getObjectFromRequestParameter(String requestParameterName, Converter converter, UIComponent component) {
-        String theId = JsfUtil.getRequestParameter(requestParameterName);
-        return converter.getAsObject(FacesContext.getCurrentInstance(), component, theId);
+    public static Object getObjectFromRequestParameter(String requestParameterName, Converter converter, 
+            UIComponent component) {
+        return converter.getAsObject(FacesContext.getCurrentInstance(), component, 
+                JsfUtil.getRequestParameter(requestParameterName));
     }
     
 }

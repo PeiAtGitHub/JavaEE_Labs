@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.addressbook.web;
 
 import java.io.Serializable;
@@ -24,25 +17,32 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 
+import org.apache.commons.lang3.StringUtils;
+
 @Named
 @SessionScoped
 public class ContactController implements Serializable {
+
     private static final long serialVersionUID = -8163374738411860012L;
-    private Contact current;
-    private DataModel items = null;
-    @EJB private ContactFacade ejbFacade;
-    private PaginationHelper pagination;
+    
+    private static final String RESOURCE_BUNDLE_BASE = "/Bundle";
+    
+    private Contact currentContact;
+    private DataModel<Contact> items = null;
+    
+    @EJB 
+    private ContactFacade ejbFacade;
+    
+    private PaginationHelper paginationHelper;
+    
     private int selectedItemIndex;
 
-    public ContactController() {
-    }
-
     public Contact getSelected() {
-        if (current == null) {
-            current = new Contact();
+        if (currentContact == null) {
+            currentContact = new Contact();
             selectedItemIndex = -1;
         }
-        return current;
+        return currentContact;
     }
 
     private ContactFacade getFacade() {
@@ -50,21 +50,20 @@ public class ContactController implements Serializable {
     }
 
     public PaginationHelper getPagination() {
-        if (pagination == null) {
-            pagination = new PaginationHelper(10) {
-
+        if (paginationHelper == null) {
+            paginationHelper = new PaginationHelper(10) {
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
                 }
-
                 @Override
-                public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                public DataModel<Contact> createPageDataModel() {
+                    return new ListDataModel<Contact>(getFacade().findRange(
+                            new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
-        return pagination;
+        return paginationHelper;
     }
 
     public String prepareList() {
@@ -73,48 +72,48 @@ public class ContactController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Contact)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        currentContact = (Contact)getItems().getRowData();
+        selectedItemIndex = paginationHelper.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Contact();
+        currentContact = new Contact();
         selectedItemIndex = -1;
         return "Create";
     }
 
     public String create() {
         try {
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ContactCreated"));
+            getFacade().create(currentContact);
+            addSuccessMessage("ContactCreated");
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            addErrorMessage(e, "PersistenceErrorOccured");
             return null;
         }
     }
 
     public String prepareEdit() {
-        current = (Contact)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        currentContact = (Contact)getItems().getRowData();
+        selectedItemIndex = paginationHelper.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
         try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ContactUpdated"));
+            getFacade().edit(currentContact);
+            addSuccessMessage("ContactUpdated");
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            addErrorMessage(e, "PersistenceErrorOccured");
             return null;
         }
     }
 
     public String destroy() {
-        current = (Contact)getItems().getRowData();
-        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        currentContact = (Contact)getItems().getRowData();
+        selectedItemIndex = paginationHelper.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreateModel();
         return "List";
@@ -135,25 +134,23 @@ public class ContactController implements Serializable {
 
     private void performDestroy() {
         try {
-            getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ContactDeleted"));
+            getFacade().remove(currentContact);
+            addSuccessMessage("ContactDeleted");
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            addErrorMessage(e, "PersistenceErrorOccured");
         }
     }
 
     private void updateCurrentItem() {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
-            // selected index cannot be bigger than number of items:
-            selectedItemIndex = count-1;
-            // go to previous page if last page disappeared:
-            if (pagination.getPageFirstItem() >= count) {
-                pagination.previousPage();
+            selectedItemIndex = count-1; 
+            if (paginationHelper.getPageFirstItem() >= count) {// go to previous page if last page disappeared
+                paginationHelper.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
+            currentContact = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -193,25 +190,14 @@ public class ContactController implements Serializable {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-            if (value == null || value.length() == 0) {
+            if (StringUtils.isEmpty(value)) {
                 return null;
             }
             ContactController controller = (ContactController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "contactController");
-            return controller.ejbFacade.find(getKey(value));
+            return controller.ejbFacade.find(Long.valueOf(value));
         }
 
-        java.lang.Long getKey(String value) {
-            java.lang.Long key;
-            key = Long.valueOf(value);
-            return key;
-        }
-
-        String getStringKey(java.lang.Long value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value);
-            return sb.toString();
-        }
 
         @Override
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
@@ -219,18 +205,20 @@ public class ContactController implements Serializable {
                 return null;
             }
             if (object instanceof Contact) {
-                Contact o = (Contact) object;
-                return getStringKey(o.getId());
+                return ((Contact) object).getId().toString();
             } else {
-                throw new IllegalArgumentException("object " + 
-                        object + 
-                        " is of type " + 
-                        object.getClass().getName() + 
-                        "; expected type: " +
-                        ContactController.class.getName());
+                throw new IllegalArgumentException(String.format("Object %s is of type %s; expected type: %s",  
+                                object, object.getClass().getName(), ContactController.class.getName()));
             }
         }
+    }
+    
+    private void addSuccessMessage(String propKey) {
+        JsfUtil.addSuccessMessage(ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE).getString(propKey));
+    }
 
+    private void addErrorMessage(Exception e, String propKey) {
+        JsfUtil.addErrorMessage(e, ResourceBundle.getBundle(RESOURCE_BUNDLE_BASE).getString(propKey));
     }
 
 }

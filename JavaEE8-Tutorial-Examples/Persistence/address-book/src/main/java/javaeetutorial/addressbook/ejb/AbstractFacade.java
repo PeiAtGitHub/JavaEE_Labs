@@ -1,25 +1,15 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package javaeetutorial.addressbook.ejb;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
-/**
- *
- * @author ian
- */
+
 public abstract class AbstractFacade<T> {
+    
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
@@ -28,6 +18,7 @@ public abstract class AbstractFacade<T> {
 
     protected abstract EntityManager getEntityManager();
 
+    
     public void create(T entity) {
         getEntityManager().persist(entity);
     }
@@ -45,26 +36,34 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<T> findAll() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        CriteriaQuery cq = createNewCriteriaQuery();
         cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();
+        return createQuery(cq).getResultList();
     }
 
     public List<T> findRange(int[] range) {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        CriteriaQuery cq = createNewCriteriaQuery();
         cq.select(cq.from(entityClass));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
+        Query q = createQuery(cq);
         q.setMaxResults(range[1] - range[0]);
         q.setFirstResult(range[0]);
         return q.getResultList();
     }
 
+
     public int count() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
-        cq.select(getEntityManager().getCriteriaBuilder().count(rt));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
-        return ((Long) q.getSingleResult()).intValue();
+        CriteriaQuery cq = createNewCriteriaQuery();
+        cq.select(getEntityManager().getCriteriaBuilder().count((Root<T>) cq.from(entityClass)));
+        return ((Long) createQuery(cq).getSingleResult()).intValue();
     }
 
+
+    private CriteriaQuery createNewCriteriaQuery() {
+        return getEntityManager().getCriteriaBuilder().createQuery();
+    }
+
+    private TypedQuery createQuery(CriteriaQuery cq) {
+        return getEntityManager().createQuery(cq);
+    }
+    
 }

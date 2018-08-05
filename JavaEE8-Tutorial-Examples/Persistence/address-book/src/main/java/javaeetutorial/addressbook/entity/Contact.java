@@ -1,14 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaeetutorial.addressbook.entity;
 
 import java.io.Serializable;
@@ -22,141 +11,82 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
-/**
- *
- * @author ian
- */
 @Entity
 public class Contact implements Serializable {
 
     private static final long serialVersionUID = -825634229676522580L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     @NotNull
     protected String firstName;
     @NotNull
     protected String lastName;
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
-            + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
-            + "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
-            + "(?:[a-z0-9-]*[a-z0-9])?",
-            message = "{invalid.email}")
+    
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+            + "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "{invalid.email}")
     protected String email;
-    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$",
-            message = "{invalid.phonenumber}")
-    protected String mobilePhone;
-    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$",
-            message = "{invalid.phonenumber}")
-    protected String homePhone;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    
+    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message = "{invalid.phonenumber}")
+    protected String mobilePhone = "0987654321";
+    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message = "{invalid.phonenumber}")
+    protected String homePhone = "1234567890";
+    
+    @Temporal(javax.persistence.TemporalType.DATE) 
     @Past
     protected Date birthday;
 
-    /**
-     * Get the value of birthday
-     *
-     * @return the value of birthday
+
+    /*
+     * getters and setters. 
+     * using Lombok cause compile error in the ContactController
      */
     public Date getBirthday() {
         return birthday;
     }
 
-    /**
-     * Set the value of birthday
-     *
-     * @param birthday new value of birthday
-     */
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
-    /**
-     * Get the value of homePhone
-     *
-     * @return the value of homePhone
-     */
     public String getHomePhone() {
         return homePhone;
     }
 
-    /**
-     * Set the value of homePhone
-     *
-     * @param homePhone new value of homePhone
-     */
     public void setHomePhone(String homePhone) {
         this.homePhone = homePhone;
     }
 
-    /**
-     * Get the value of mobilePhone
-     *
-     * @return the value of mobilePhone
-     */
     public String getMobilePhone() {
         return mobilePhone;
     }
 
-    /**
-     * Set the value of mobilePhone
-     *
-     * @param mobilePhone new value of mobilePhone
-     */
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
-    /**
-     * Get the value of email
-     *
-     * @return the value of email
-     */
     public String getEmail() {
         return email;
     }
 
-    /**
-     * Set the value of email
-     *
-     * @param email new value of email
-     */
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     * Get the value of lastName
-     *
-     * @return the value of lastName
-     */
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     * Set the value of lastName
-     *
-     * @param lastName new value of lastName
-     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    /**
-     * Get the value of firstName
-     *
-     * @return the value of firstName
-     */
     public String getFirstName() {
         return firstName;
     }
 
-    /**
-     * Set the value of firstName
-     *
-     * @param firstName new value of firstName
-     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
