@@ -14,7 +14,7 @@
     <modules>
         <module>AsyncMethodInvocation</module>
         <module>ShoppingCart</module>
-        <module>converter</module>
+        <module>SomeEjbExamples</module>
         <module>helloservice</module>
         <module>standalone</module>
     </modules>
