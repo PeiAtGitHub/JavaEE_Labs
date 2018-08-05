@@ -8,7 +8,7 @@
     <name>ShoppingCart</name>
   
     <parent>
-        <artifactId>ejb</artifactId>
+        <artifactId>EJB</artifactId>
         <groupId>org.glassfish.javaeetutorial</groupId>
         <version>8.0</version>
     </parent>
