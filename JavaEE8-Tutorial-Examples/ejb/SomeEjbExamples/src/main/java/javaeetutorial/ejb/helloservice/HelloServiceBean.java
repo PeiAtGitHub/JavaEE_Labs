@@ -1,4 +1,4 @@
-package javaeetutorial.helloservice.ejb;
+package javaeetutorial.ejb.helloservice;
 
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
