@@ -31,7 +31,7 @@ public class CartClient {
 
             System.exit(0);
         } catch (CartException ex) {
-            System.err.println("Caught a BookException: " + ex.getMessage());
+            System.err.println("Caught Exception: " + ex.getMessage());
             System.exit(0);
         }
     }

@@ -3,14 +3,18 @@ package javaeetutorial.cart.util;
 public class IdVerifier {
 
     public boolean validate(String id) {
-        boolean result = true;
+        return isAllDigit(id);
+    }
 
-        for (int i = 0; i < id.length(); i++) {
-            if (Character.isDigit(id.charAt(i)) == false) {
-                result = false;
+    /*
+     * Is this more complete than judging by Regex "\d*"?
+     */
+    private boolean isAllDigit(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i)) == false) {
+                return false;
             }
         }
-
-        return result;
+        return true;
     }
 }

@@ -34,8 +34,7 @@ public class CartBean implements Cart, Serializable {
             customerName = person;
         }
 
-        IdVerifier idChecker = new IdVerifier();
-        if (idChecker.validate(id)) {
+        if (new IdVerifier().validate(id)) {
             customerId = id;
         } else {
             throw new CartException("Invalid id: " + id);
@@ -61,7 +60,11 @@ public class CartBean implements Cart, Serializable {
         return contents;
     }
 
-    @Remove()
+    /*
+     * Business methods annotated with @Remove can be invoked by enterprise bean clients to remove the bean instance. 
+     * The container will remove the enterprise bean after a @Remove method completes(normally or abnormally).
+     */
+    @Remove() 
     @Override
     public void remove() {
         contents = null;
