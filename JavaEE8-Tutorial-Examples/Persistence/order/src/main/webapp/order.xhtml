@@ -1,13 +1,4 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!--
-
-    Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
-
-    You may not modify, use, reproduce, or distribute this software except in
-    compliance with  the terms of the License at:
-    https://github.com/javaee/tutorial-examples/LICENSE.txt
-
--->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
@@ -15,23 +6,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/order-template.xhtml">
-        <ui:define name="title">Order Java Persistence Example</ui:define>
-        <ui:define name="body">
-
-        </ui:define>
+        <ui:define name="title">Order</ui:define>
+        <ui:define name="body"></ui:define>
 
         <ui:define name="ordersTable">
 
-            <h:dataTable
-                var="order"
-                summary="Table of orders"
-                value="#{orderManager.orders}"
-                rules="all"
-                cellpadding="5">
+            <h:dataTable var="order" summary="Table of orders" value="#{orderManager.orders}"
+                rules="all" cellpadding="5">
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Order ID" />
-                    </f:facet>
+                    <f:facet name="header"><h:outputText value="Order ID" /></f:facet>
                     <h:form>
                         <h:commandLink id="order_id_link" action="lineItem">
                             <h:outputText value="#{order.orderId}" />
@@ -40,33 +23,23 @@
                     </h:form>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Shipment Info" />
-                    </f:facet>
+                    <f:facet name="header"><h:outputText value="Shipment Info" /></f:facet>
                     <h:outputText value="#{order.shipmentInfo}" />
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Status" />
-                    </f:facet>
+                    <f:facet name="header"><h:outputText value="Status" /></f:facet>
                     <h:outputText value="#{order.status}" />
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Last Updated" />
-                    </f:facet>
+                    <f:facet name="header"><h:outputText value="Last Updated" /></f:facet>
                     <h:outputText value="#{order.lastUpdate}" />
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Discount" />
-                    </f:facet>
+                    <f:facet name="header"><h:outputText value="Discount" /></f:facet>
                     <h:outputText value="#{order.discount}%" />
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Actions" />
-                    </f:facet>
+                    <f:facet name="header"><h:outputText value="Actions" /></f:facet>
                     <h:form>
                         <h:commandLink value="Delete" actionListener="#{orderManager.removeOrder}" action="order">
                             <f:param name="deleteOrderId" id="deleteOrderId" value="#{order.orderId}" />
@@ -118,16 +91,10 @@
         </ui:define>
 
         <ui:define name="findVendorTable">
-            <h:dataTable var="vendor" 
-                         summary="Table of vendors"
-                         value="#{orderManager.vendorSearchResults}"
-                         rules="all"
-                         cellpadding="5"
-                         rendered="#{orderManager.findVendorTableDisabled}">
+            <h:dataTable var="vendor" summary="Table of vendors" value="#{orderManager.vendorSearchResults}"
+                         rules="all" cellpadding="5" rendered="#{orderManager.findVendorTableDisabled}">
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Vendor" />
-                    </f:facet>
+                    <f:facet name="header"><h:outputText value="Vendor" /></f:facet>
                     <h:outputText value="#{vendor}" />
                 </h:column>
             </h:dataTable>

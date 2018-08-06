@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.order.entity;
 
 import java.util.ArrayList;
@@ -22,12 +15,9 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="PERSISTENCE_ORDER_CUSTOMERORDER")
-@NamedQuery(
-    name="findAllOrders",
-    query="SELECT co FROM CustomerOrder co " +
-          "ORDER BY co.orderId"
-)
+@NamedQuery(name="findAllOrders", query="SELECT co FROM CustomerOrder co ORDER BY co.orderId")
 public class CustomerOrder implements java.io.Serializable {
+    
     private static final long serialVersionUID = 6582105865012174694L;
     private Integer orderId;
     private char status;
@@ -41,8 +31,7 @@ public class CustomerOrder implements java.io.Serializable {
         this.lineItems = new ArrayList<>();
     }
     
-    public CustomerOrder(Integer orderId, char status, int discount, 
-            String shipmentInfo) {
+    public CustomerOrder(Integer orderId, char status, int discount, String shipmentInfo) {
         this.orderId = orderId;
         this.status = status;
         this.discount = discount;
