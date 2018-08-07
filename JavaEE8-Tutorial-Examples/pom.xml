@@ -105,7 +105,7 @@
         <module>JAX-WS</module>
         <module>jms</module>
         <module>Persistence</module>
-        <module>security</module>
+        <module>Security</module>
         <module>Websocket</module>
         <module>Servlet</module>
     </modules>
