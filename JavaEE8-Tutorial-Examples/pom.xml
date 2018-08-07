@@ -98,7 +98,7 @@
         <module>archetypes</module>
         <module>batch</module>
         <module>CDI</module>
-        <module>concurrency</module>
+        <module>Concurrency</module>
         <module>connectors</module>
         <module>EJB</module>
         <module>JAX-RS</module>

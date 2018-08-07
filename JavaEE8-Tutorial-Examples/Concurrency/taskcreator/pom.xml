@@ -10,7 +10,7 @@
 
     <parent>
         <groupId>org.glassfish.javaeetutorial</groupId>
-        <artifactId>concurrency</artifactId>
+        <artifactId>Concurrency</artifactId>
         <version>8.0</version>
     </parent>
     
