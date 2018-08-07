@@ -7,11 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import lombok.NoArgsConstructor;
-
 @Entity
 @Table(name = "PERSISTENCE_ROSTER_PLAYER")
-@NoArgsConstructor
 public class Player implements Serializable {
     
     private static final long serialVersionUID = -2760127516426049966L;
@@ -20,6 +17,9 @@ public class Player implements Serializable {
     private String position;
     private double salary;
     private Collection<Team> teams;
+    
+    public Player() {
+    }
         
     public Player(String id, String name, String position, double salary) {
         this.id = id;

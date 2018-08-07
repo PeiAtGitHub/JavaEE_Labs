@@ -49,8 +49,7 @@ public class RequestBean implements Request, Serializable {
     @Override
     public void createPlayer(String id, String name, String position, double salary) {
         try {
-            Player player = new Player(id, name, position, salary);
-            em.persist(player);
+            em.persist(new Player(id, name, position, salary));
         } catch (Exception ex) {
             throw new EJBException(ex);
         }
@@ -72,10 +71,7 @@ public class RequestBean implements Request, Serializable {
     public void removePlayer(String playerId) {
         try {
             Player player = em.find(Player.class, playerId);
-            Collection<Team> teams = player.getTeams();
-            Iterator<Team> i = teams.iterator();
-            while (i.hasNext()) {
-                Team team = i.next();
+            for(Team team : player.getTeams()) {
                 team.dropPlayer(player);
             }
             em.remove(player);
@@ -121,19 +117,13 @@ public class RequestBean implements Request, Serializable {
     @Override
     public List<TeamDetails> getTeamsOfLeague(String leagueId) {
         List<TeamDetails> detailsList = new ArrayList<>();
-        Collection<Team> teams = null;
         try {
             League league = em.find(League.class, leagueId);
-            teams = league.getTeams();
+            for(Team team : league.getTeams()) {
+                detailsList.add(new TeamDetails(team.getId(), team.getName(), team.getCity()));
+            }
         } catch (Exception ex) {
             throw new EJBException(ex);
-        }
-
-        Iterator<Team> i = teams.iterator();
-        while (i.hasNext()) {
-            Team team = (Team) i.next();
-            TeamDetails teamDetails = new TeamDetails(team.getId(), team.getName(), team.getCity());
-            detailsList.add(teamDetails);
         }
         return detailsList;
     }
@@ -145,15 +135,13 @@ public class RequestBean implements Request, Serializable {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
                 Root<Player> player = cq.from(Player.class);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player.getModel();
 
                 // set the where clause
                 cq.where(cb.equal(player.get(Player_.position), position));
                 cq.select(player);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -169,7 +157,6 @@ public class RequestBean implements Request, Serializable {
             if (cq != null) {
                 Root<Player> player1 = cq.from(Player.class);
                 Root<Player> player2 = cq.from(Player.class);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player1.getModel();
 
@@ -183,8 +170,7 @@ public class RequestBean implements Request, Serializable {
                 cq.where(gtPredicate, equalPredicate);
                 // set the select clause, and return only unique entries
                 cq.select(player1).distinct(true);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -199,7 +185,6 @@ public class RequestBean implements Request, Serializable {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
                 Root<Player> player = cq.from(Player.class);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player.getModel();
 
@@ -207,8 +192,7 @@ public class RequestBean implements Request, Serializable {
                 cq.where(cb.between(player.get(Player_.salary), low, high));
                 // set the select clause
                 cq.select(player).distinct(true);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -232,8 +216,7 @@ public class RequestBean implements Request, Serializable {
                 // set the where clause
                 cq.where(cb.equal(league.get(League_.id), leagueId));
                 cq.select(player).distinct(true);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -250,15 +233,13 @@ public class RequestBean implements Request, Serializable {
                 Root<Player> player = cq.from(Player.class);
                 Join<Player, Team> team = player.join(Player_.teams);
                 Join<Team, League> league = team.join(Team_.league);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player.getModel();
 
                 // set the where clause
                 cq.where(cb.equal(league.get(League_.sport), sport));
                 cq.select(player).distinct(true);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -274,15 +255,13 @@ public class RequestBean implements Request, Serializable {
             if (cq != null) {
                 Root<Player> player = cq.from(Player.class);
                 Join<Player, Team> team = player.join(Player_.teams);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player.getModel();
 
                 // set the where clause
                 cq.where(cb.equal(team.get(Team_.city), city));
                 cq.select(player).distinct(true);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -297,10 +276,8 @@ public class RequestBean implements Request, Serializable {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
                 Root<Player> player = cq.from(Player.class);
-
                 cq.select(player);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -315,15 +292,13 @@ public class RequestBean implements Request, Serializable {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
                 Root<Player> player = cq.from(Player.class);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player.getModel();
 
                 // set the where clause
                 cq.where(cb.isEmpty(player.get(Player_.teams)));
                 cq.select(player).distinct(true);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -338,7 +313,6 @@ public class RequestBean implements Request, Serializable {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
                 Root<Player> player = cq.from(Player.class);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player.getModel();
 
@@ -346,8 +320,7 @@ public class RequestBean implements Request, Serializable {
                 cq.where(cb.equal(player.get(Player_.position), position),
                         cb.equal(player.get(Player_.name), name));
                 cq.select(player).distinct(true);
-                TypedQuery<Player> q = em.createQuery(cq);
-                players = q.getResultList();
+                players = em.createQuery(cq).getResultList();
             }
             return copyPlayersToDetails(players);
         } catch (Exception ex) {
@@ -359,7 +332,6 @@ public class RequestBean implements Request, Serializable {
     public List<LeagueDetails> getLeaguesOfPlayer(String playerId) {
         List<LeagueDetails> detailsList = new ArrayList<>();
         List<League> leagues = null;
-
         try {
             CriteriaQuery<League> cq = cb.createQuery(League.class);
             if (cq != null) {
@@ -371,22 +343,17 @@ public class RequestBean implements Request, Serializable {
 
                 cq.where(cb.equal(player.get(Player_.id), playerId));
                 cq.select(league).distinct(true);
-                TypedQuery<League> q = em.createQuery(cq);
-                leagues = q.getResultList();
+                leagues = em.createQuery(cq).getResultList();
             }
         } catch (Exception ex) {
             throw new EJBException(ex);
         }
-
         if (leagues == null) {
             logger.log(Level.WARNING, "No leagues found for player with ID {0}.", playerId);
             return null;
         } else {
-            Iterator<League> i = leagues.iterator();
-            while (i.hasNext()) {
-                League league = (League) i.next();
-                LeagueDetails leagueDetails = new LeagueDetails(league.getId(), league.getName(), league.getSport());
-                detailsList.add(leagueDetails);
+            for(League league : leagues) {
+                detailsList.add(new LeagueDetails(league.getId(), league.getName(), league.getSport()));
             }
         }
         return detailsList;
@@ -401,17 +368,14 @@ public class RequestBean implements Request, Serializable {
                 Root<Player> player = cq.from(Player.class);
                 Join<Player, Team> team = player.join(Player_.teams);
                 Join<Team, League> league = team.join(Team_.league);
-
                 // Get MetaModel from Root
                 //EntityType<Player> Player_ = player.getModel();
 
                 // set the where clause
                 cq.where(cb.equal(player.get(Player_.id), playerId));
                 cq.select(league.get(League_.sport)).distinct(true);
-                TypedQuery<String> q = em.createQuery(cq);
-                sports = q.getResultList();
+                sports = em.createQuery(cq).getResultList();
             }
-
 //        Player player = em.find(Player.class, playerId);
 //        Iterator<Team> i = player.getTeams().iterator();
 //        while (i.hasNext()) {
@@ -429,9 +393,7 @@ public class RequestBean implements Request, Serializable {
     public void createTeamInLeague(TeamDetails teamDetails, String leagueId) {
         try {
             League league = em.find(League.class, leagueId);
-            Team team = new Team(teamDetails.getId(),
-                    teamDetails.getName(),
-                    teamDetails.getCity());
+            Team team = new Team(teamDetails.getId(), teamDetails.getName(), teamDetails.getCity());
             em.persist(team);
             team.setLeague(league);
             league.addTeam(team);
@@ -444,10 +406,7 @@ public class RequestBean implements Request, Serializable {
     public void removeTeam(String teamId) {
         try {
             Team team = em.find(Team.class, teamId);
-            Collection<Player> players = team.getPlayers();
-            Iterator<Player> i = players.iterator();
-            while (i.hasNext()) {
-                Player player = (Player) i.next();
+            for(Player player : team.getPlayers()) {
                 player.dropTeam(team);
             }
             em.remove(team);
@@ -458,7 +417,6 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public TeamDetails getTeam(String teamId) {
-        logger.info("getTeam");
         TeamDetails teamDetails = null;
         try {
             Team team = em.find(Team.class, teamId);
@@ -471,7 +429,6 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public void createLeague(LeagueDetails leagueDetails) {
-        logger.info("createLeague");
         try {
             if (leagueDetails.getSport().equalsIgnoreCase("soccer")
                     || leagueDetails.getSport().equalsIgnoreCase("swimming")
@@ -518,15 +475,11 @@ public class RequestBean implements Request, Serializable {
 
     private List<PlayerDetails> copyPlayersToDetails(List<Player> players) {
         List<PlayerDetails> detailsList = new ArrayList<>();
-        Iterator<Player> i = players.iterator();
-        while (i.hasNext()) {
-            Player player = (Player) i.next();
-            PlayerDetails playerDetails = new PlayerDetails(player.getId(),
-                    player.getName(),
-                    player.getPosition(),
-                    player.getSalary());
-            detailsList.add(playerDetails);
+        for (Player player : players) {
+            detailsList.add(new PlayerDetails(player.getId(), player.getName(), player.getPosition(),
+                    player.getSalary()));
         }
         return detailsList;
     }
+    
 }
