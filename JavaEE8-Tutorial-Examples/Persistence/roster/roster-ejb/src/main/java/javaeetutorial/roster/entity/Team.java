@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.roster.entity;
 
 import java.io.Serializable;
@@ -17,20 +10,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "PERSISTENCE_ROSTER_TEAM")
+@NoArgsConstructor
 public class Team implements Serializable {
+    
     private static final long serialVersionUID = 4797864229333271809L;
     private String id;
     private String name;
     private String city;
     private Collection<Player> players;
     private League league;
-    
-    /** Creates a new instance of Team */
-    public Team() {
-    }
     
     public Team(String id, String name, String city) {
         this.id = id;
@@ -64,12 +56,9 @@ public class Team implements Serializable {
     }
 
     @ManyToMany
-    @JoinTable(
-        name="PERSISTENCE_ROSTER_TEAM_PLAYER",
-        joinColumns=
-            @JoinColumn(name="TEAM_ID", referencedColumnName="ID"),
-        inverseJoinColumns=
-            @JoinColumn(name="PLAYER_ID", referencedColumnName="ID")
+    @JoinTable(name = "PERSISTENCE_ROSTER_TEAM_PLAYER", 
+               joinColumns = @JoinColumn(name="TEAM_ID", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="PLAYER_ID", referencedColumnName="ID")
     )
     public Collection<Player> getPlayers() {
         return players;

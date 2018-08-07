@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.roster.entity;
 
 import java.io.Serializable;
@@ -15,10 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "PERSISTENCE_ROSTER_LEAGUE")
 public abstract class League implements Serializable {
+    
     private static final long serialVersionUID = 5060910864394673463L;
     protected String id;
     protected String name;

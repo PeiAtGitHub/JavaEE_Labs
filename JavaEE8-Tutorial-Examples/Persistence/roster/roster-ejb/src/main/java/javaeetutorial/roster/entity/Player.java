@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.roster.entity;
 
 import java.io.Serializable;
@@ -14,9 +7,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "PERSISTENCE_ROSTER_PLAYER")
+@NoArgsConstructor
 public class Player implements Serializable {
+    
     private static final long serialVersionUID = -2760127516426049966L;
     private String id;
     private String name;
@@ -24,10 +21,6 @@ public class Player implements Serializable {
     private double salary;
     private Collection<Team> teams;
         
-    /** Creates a new instance of Player */
-    public Player() {
-    }
-    
     public Player(String id, String name, String position, double salary) {
         this.id = id;
         this.name = name;

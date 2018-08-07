@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.roster.request;
 
 import java.io.Serializable;
@@ -38,16 +31,12 @@ import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-/**
- * This is the bean class for the RequestBean enterprise bean.
- *
- * @author ian
- */
 @Stateful
 public class RequestBean implements Request, Serializable {
 
-    private static final Logger logger = 
-            Logger.getLogger("roster.request.RequestBean");
+    private static final long serialVersionUID = 1L;
+    private static final Logger logger = Logger.getLogger("roster.request.RequestBean");
+    
     @PersistenceContext
     private EntityManager em;
     private CriteriaBuilder cb;
@@ -58,11 +47,7 @@ public class RequestBean implements Request, Serializable {
     }
 
     @Override
-    public void createPlayer(String id,
-            String name,
-            String position,
-            double salary) {
-        logger.info("createPlayer");
+    public void createPlayer(String id, String name, String position, double salary) {
         try {
             Player player = new Player(id, name, position, salary);
             em.persist(player);
@@ -73,11 +58,9 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public void addPlayer(String playerId, String teamId) {
-        logger.info("addPlayer");
         try {
             Player player = em.find(Player.class, playerId);
             Team team = em.find(Team.class, teamId);
-
             team.addPlayer(player);
             player.addTeam(team);
         } catch (Exception ex) {
@@ -87,17 +70,14 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public void removePlayer(String playerId) {
-        logger.info("removePlayer");
         try {
             Player player = em.find(Player.class, playerId);
-
             Collection<Team> teams = player.getTeams();
             Iterator<Team> i = teams.iterator();
             while (i.hasNext()) {
                 Team team = i.next();
                 team.dropPlayer(player);
             }
-
             em.remove(player);
         } catch (Exception ex) {
             throw new EJBException(ex);
@@ -106,11 +86,9 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public void dropPlayer(String playerId, String teamId) {
-        logger.info("dropPlayer");
         try {
             Player player = em.find(Player.class, playerId);
             Team team = em.find(Team.class, teamId);
-
             team.dropPlayer(player);
             player.dropTeam(team);
         } catch (Exception ex) {
@@ -120,14 +98,9 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public PlayerDetails getPlayer(String playerId) {
-        logger.info("getPlayerDetails");
         try {
             Player player = em.find(Player.class, playerId);
-            PlayerDetails playerDetails = new PlayerDetails(player.getId(),
-                    player.getName(),
-                    player.getPosition(),
-                    player.getSalary());
-            return playerDetails;
+            return new PlayerDetails(player.getId(), player.getName(), player.getPosition(), player.getSalary());
         } catch (Exception ex) {
             throw new EJBException(ex);
         }
@@ -135,7 +108,6 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersOfTeam(String teamId) {
-        logger.info("getPlayersOfTeam");
         List<PlayerDetails> playerList = null;
         try {
             Team team = em.find(Team.class, teamId);
@@ -148,10 +120,8 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<TeamDetails> getTeamsOfLeague(String leagueId) {
-        logger.info("getTeamsOfLeague");
         List<TeamDetails> detailsList = new ArrayList<>();
         Collection<Team> teams = null;
-
         try {
             League league = em.find(League.class, leagueId);
             teams = league.getTeams();
@@ -162,9 +132,7 @@ public class RequestBean implements Request, Serializable {
         Iterator<Team> i = teams.iterator();
         while (i.hasNext()) {
             Team team = (Team) i.next();
-            TeamDetails teamDetails = new TeamDetails(team.getId(),
-                    team.getName(),
-                    team.getCity());
+            TeamDetails teamDetails = new TeamDetails(team.getId(), team.getName(), team.getCity());
             detailsList.add(teamDetails);
         }
         return detailsList;
@@ -172,9 +140,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersByPosition(String position) {
-        logger.info("getPlayersByPosition");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -197,9 +163,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersByHigherSalary(String name) {
-        logger.info("getPlayersByHigherSalary");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -211,14 +175,10 @@ public class RequestBean implements Request, Serializable {
 
                 // create a Predicate object that finds players with a salary
                 // greater than player1
-                Predicate gtPredicate = cb.greaterThan(
-                        player1.get(Player_.salary),
-                        player2.get(Player_.salary));
+                Predicate gtPredicate = cb.greaterThan(player1.get(Player_.salary), player2.get(Player_.salary));
                 // create a Predicate object that finds the player based on
                 // the name parameter
-                Predicate equalPredicate = cb.equal(
-                        player2.get(Player_.name),
-                        name);
+                Predicate equalPredicate = cb.equal(player2.get(Player_.name), name);
                 // set the where clause with the predicates
                 cq.where(gtPredicate, equalPredicate);
                 // set the select clause, and return only unique entries
@@ -234,9 +194,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersBySalaryRange(double low, double high) {
-        logger.info("getPlayersBySalaryRange");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -246,10 +204,7 @@ public class RequestBean implements Request, Serializable {
                 //EntityType<Player> Player_ = player.getModel();
 
                 // set the where clause
-                cq.where(cb.between(player.get(
-                        Player_.salary),
-                        low,
-                        high));
+                cq.where(cb.between(player.get(Player_.salary), low, high));
                 // set the select clause
                 cq.select(player).distinct(true);
                 TypedQuery<Player> q = em.createQuery(cq);
@@ -263,9 +218,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersByLeagueId(String leagueId) {
-        logger.info("getPlayersByLeagueId");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -290,9 +243,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersBySport(String sport) {
-        logger.info("getPlayersByLeagueId");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -317,9 +268,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersByCity(String city) {
-        logger.info("getPlayersByCity");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -343,9 +292,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getAllPlayers() {
-        logger.info("getAllPlayers");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -363,9 +310,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersNotOnTeam() {
-        logger.info("getPlayersNotOnTeam");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -388,9 +333,7 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<PlayerDetails> getPlayersByPositionAndName(String position, String name) {
-        logger.info("getPlayersByPositionAndName");
         List<Player> players = null;
-
         try {
             CriteriaQuery<Player> cq = cb.createQuery(Player.class);
             if (cq != null) {
@@ -414,7 +357,6 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public List<LeagueDetails> getLeaguesOfPlayer(String playerId) {
-        logger.info("getLeaguesOfPlayer");
         List<LeagueDetails> detailsList = new ArrayList<>();
         List<League> leagues = null;
 
@@ -443,21 +385,16 @@ public class RequestBean implements Request, Serializable {
             Iterator<League> i = leagues.iterator();
             while (i.hasNext()) {
                 League league = (League) i.next();
-                LeagueDetails leagueDetails = new LeagueDetails(league.getId(),
-                        league.getName(),
-                        league.getSport());
+                LeagueDetails leagueDetails = new LeagueDetails(league.getId(), league.getName(), league.getSport());
                 detailsList.add(leagueDetails);
             }
-
         }
         return detailsList;
     }
 
     @Override
     public List<String> getSportsOfPlayer(String playerId) {
-        logger.info("getSportsOfPlayer");
         List<String> sports = new ArrayList<>();
-
         try {
             CriteriaQuery<String> cq = cb.createQuery(String.class);
             if (cq != null) {
@@ -490,7 +427,6 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public void createTeamInLeague(TeamDetails teamDetails, String leagueId) {
-        logger.info("createTeamInLeague");
         try {
             League league = em.find(League.class, leagueId);
             Team team = new Team(teamDetails.getId(),
@@ -506,17 +442,14 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public void removeTeam(String teamId) {
-        logger.info("removeTeam");
         try {
             Team team = em.find(Team.class, teamId);
-
             Collection<Player> players = team.getPlayers();
             Iterator<Player> i = players.iterator();
             while (i.hasNext()) {
                 Player player = (Player) i.next();
                 player.dropTeam(team);
             }
-
             em.remove(team);
         } catch (Exception ex) {
             throw new EJBException(ex);
@@ -527,7 +460,6 @@ public class RequestBean implements Request, Serializable {
     public TeamDetails getTeam(String teamId) {
         logger.info("getTeam");
         TeamDetails teamDetails = null;
-
         try {
             Team team = em.find(Team.class, teamId);
             teamDetails = new TeamDetails(team.getId(), team.getName(), team.getCity());
@@ -545,15 +477,13 @@ public class RequestBean implements Request, Serializable {
                     || leagueDetails.getSport().equalsIgnoreCase("swimming")
                     || leagueDetails.getSport().equalsIgnoreCase("basketball")
                     || leagueDetails.getSport().equalsIgnoreCase("baseball")) {
-                SummerLeague league = new SummerLeague(leagueDetails.getId(),
-                        leagueDetails.getName(),
+                SummerLeague league = new SummerLeague(leagueDetails.getId(), leagueDetails.getName(), 
                         leagueDetails.getSport());
                 em.persist(league);
             } else if (leagueDetails.getSport().equalsIgnoreCase("hockey")
                     || leagueDetails.getSport().equalsIgnoreCase("skiing")
                     || leagueDetails.getSport().equalsIgnoreCase("snowboarding")) {
-                WinterLeague league = new WinterLeague(leagueDetails.getId(),
-                        leagueDetails.getName(),
+                WinterLeague league = new WinterLeague(leagueDetails.getId(), leagueDetails.getName(),
                         leagueDetails.getSport());
                 em.persist(league);
             } else {
@@ -566,7 +496,6 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public void removeLeague(String leagueId) {
-        logger.info("removeLeague");
         try {
             League league = em.find(League.class, leagueId);
             em.remove(league);
@@ -577,14 +506,10 @@ public class RequestBean implements Request, Serializable {
 
     @Override
     public LeagueDetails getLeague(String leagueId) {
-        logger.info("getLeague");
         LeagueDetails leagueDetails = null;
-
         try {
             League league = em.find(League.class, leagueId);
-            leagueDetails = new LeagueDetails(league.getId(),
-                    league.getName(),
-                    league.getSport());
+            leagueDetails = new LeagueDetails(league.getId(), league.getName(), league.getSport());
         } catch (Exception ex) {
             throw new EJBException(ex);
         }

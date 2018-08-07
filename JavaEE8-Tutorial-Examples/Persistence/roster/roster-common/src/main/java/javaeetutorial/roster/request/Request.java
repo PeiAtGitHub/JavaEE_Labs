@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.roster.request;
 
 import java.util.List;
@@ -13,9 +6,9 @@ import javaeetutorial.roster.util.PlayerDetails;
 import javaeetutorial.roster.util.TeamDetails;
 import javax.ejb.Remote;
 
-
 @Remote
 public interface Request {
+    
     void addPlayer(String playerId, String teamId);
 
     void createLeague(LeagueDetails leagueDetails);
