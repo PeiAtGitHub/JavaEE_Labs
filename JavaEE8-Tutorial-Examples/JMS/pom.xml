@@ -9,10 +9,10 @@
     </parent>
  
     <groupId>org.glassfish.javaeetutorial</groupId>
-    <artifactId>jms</artifactId>
+    <artifactId>JMS</artifactId>
     <packaging>pom</packaging>
    
-    <name>jms</name>
+    <name>JMS</name>
     
     <modules>
         <module>clientmdbentity</module>
