@@ -97,7 +97,6 @@
         <module>Json</module>
         <module>archetypes</module>
         <module>batch</module>
-        <module>case-studies</module>
         <module>CDI</module>
         <module>concurrency</module>
         <module>connectors</module>
