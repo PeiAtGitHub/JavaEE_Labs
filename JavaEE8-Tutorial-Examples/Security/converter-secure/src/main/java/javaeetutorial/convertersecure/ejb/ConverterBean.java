@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.
- *
- * You may not modify, use, reproduce, or distribute this software except in
- * compliance with  the terms of the License at:
- * https://github.com/javaee/tutorial-examples/LICENSE.txt
- */
 package javaeetutorial.convertersecure.ejb;
 
 import java.math.BigDecimal;
@@ -15,9 +8,6 @@ import javax.ejb.SessionContext;
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 
-/**
- * This is the bean class for the ConverterBean enterprise bean.
- */
 @Stateless
 @DeclareRoles("TutorialUser")
 public class ConverterBean {
