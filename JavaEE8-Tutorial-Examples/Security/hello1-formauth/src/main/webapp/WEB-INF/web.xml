@@ -17,25 +17,23 @@
     </servlet-mapping>
     
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+
     <security-constraint>
         <display-name>Constraint1</display-name>
         <web-resource-collection>
             <web-resource-name>wrcoll</web-resource-name>
-            <description/>
             <url-pattern>/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <description/>
             <role-name>TutorialUser</role-name>
         </auth-constraint>
     </security-constraint>
+    
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>file</realm-name>
@@ -44,8 +42,9 @@
             <form-error-page>/error.html</form-error-page>
         </form-login-config>
     </login-config>
+
     <security-role>
-        <description/>
         <role-name>TutorialUser</role-name>
     </security-role>
+    
 </web-app>
